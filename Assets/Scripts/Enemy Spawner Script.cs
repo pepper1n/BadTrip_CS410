@@ -9,7 +9,7 @@ public class EnemySpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        GameObject enemy = Instantiate(enemyPrefab, transform.position+new Vector3(Random.Range(3,5),0,Random.Range(3,5)), Quaternion.identity);
 
     }
 

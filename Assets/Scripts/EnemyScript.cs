@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public float enemySpeed = 5;
 
     private float range;
-    private int state = 1;
+    private int state = 0;
     public float timer = 5;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
@@ -31,7 +31,17 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(state == 0)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (state == 0)
+            {
+                state = 1;
+            }else
+            {
+                state = 0;
+            }
+        }
+        if (state == 0)
         {
             this.GetComponent<MeshRenderer>().material = material1;
 
