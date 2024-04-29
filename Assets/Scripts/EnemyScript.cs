@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     private float shootTimer;
     private float stateTimer;
     public GameObject player;
+    public Vector3 direction;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        direction = (player.transform.position - transform.position);
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (state == 0)
@@ -79,7 +81,7 @@ public class Enemy : MonoBehaviour
     {
         if (state == 1)
         {
-            Vector3 direction = (player.transform.position - transform.position);
+            
             direction.Normalize();
             transform.position += direction * enemySpeed * Time.deltaTime;
         }

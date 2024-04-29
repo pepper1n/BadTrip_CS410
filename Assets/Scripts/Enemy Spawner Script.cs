@@ -10,7 +10,7 @@ public class EnemySpawnerScript : MonoBehaviour
     void Start()
     {
         GameObject enemy = Instantiate(enemyPrefab, transform.position+new Vector3(Random.Range(3,5),0,Random.Range(3,5)), Quaternion.identity);
-
+        enemy.SetActive(true);
     }
 
     // Update is called once per frame

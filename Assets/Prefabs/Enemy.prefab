@@ -187,4 +187,5 @@ MonoBehaviour:
   bulletSpeed: 10
   shootFrequency: 1
   shootingRange: 10
-  player: {fileID: 6006066441923167662, guid: 1ef470d073d61b1449dcdf706e4b5aee, type: 3}
+  player: {fileID: 0}
+  direction: {x: 0, y: 0, z: 0}
