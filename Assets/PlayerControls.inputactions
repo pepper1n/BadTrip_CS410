@@ -94,13 +94,22 @@
             ]
         },
         {
-            "name": "Dash",
+            "name": "PlayerActions",
             "id": "9803c7bf-27b6-44c7-a2aa-4be1648cc388",
             "actions": [
                 {
                     "name": "Dash",
                     "type": "Button",
                     "id": "6e7a0645-9762-4579-af1f-305d02aae944",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Punch",
+                    "type": "Button",
+                    "id": "1a0e248c-b538-46d2-a525-f50a2cc54981",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -116,6 +125,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "00d5df28-b2dc-45fb-ae10-6f852a4e94ae",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

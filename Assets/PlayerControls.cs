@@ -116,13 +116,22 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Dash"",
+            ""name"": ""PlayerActions"",
             ""id"": ""9803c7bf-27b6-44c7-a2aa-4be1648cc388"",
             ""actions"": [
                 {
                     ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""6e7a0645-9762-4579-af1f-305d02aae944"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Punch"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a0e248c-b538-46d2-a525-f50a2cc54981"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -138,6 +147,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00d5df28-b2dc-45fb-ae10-6f852a4e94ae"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Punch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -178,9 +198,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Move = asset.FindActionMap("Move", throwIfNotFound: true);
         m_Move_Movement = m_Move.FindAction("Movement", throwIfNotFound: true);
         m_Move_Camera = m_Move.FindAction("Camera", throwIfNotFound: true);
-        // Dash
-        m_Dash = asset.FindActionMap("Dash", throwIfNotFound: true);
-        m_Dash_Dash = m_Dash.FindAction("Dash", throwIfNotFound: true);
+        // PlayerActions
+        m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
+        m_PlayerActions_Dash = m_PlayerActions.FindAction("Dash", throwIfNotFound: true);
+        m_PlayerActions_Punch = m_PlayerActions.FindAction("Punch", throwIfNotFound: true);
         // Flip
         m_Flip = asset.FindActionMap("Flip", throwIfNotFound: true);
         m_Flip_Flip = m_Flip.FindAction("Flip", throwIfNotFound: true);
@@ -296,51 +317,59 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     }
     public MoveActions @Move => new MoveActions(this);
 
-    // Dash
-    private readonly InputActionMap m_Dash;
-    private List<IDashActions> m_DashActionsCallbackInterfaces = new List<IDashActions>();
-    private readonly InputAction m_Dash_Dash;
-    public struct DashActions
+    // PlayerActions
+    private readonly InputActionMap m_PlayerActions;
+    private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
+    private readonly InputAction m_PlayerActions_Dash;
+    private readonly InputAction m_PlayerActions_Punch;
+    public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
-        public DashActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Dash => m_Wrapper.m_Dash_Dash;
-        public InputActionMap Get() { return m_Wrapper.m_Dash; }
+        public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Dash => m_Wrapper.m_PlayerActions_Dash;
+        public InputAction @Punch => m_Wrapper.m_PlayerActions_Punch;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(DashActions set) { return set.Get(); }
-        public void AddCallbacks(IDashActions instance)
+        public static implicit operator InputActionMap(PlayerActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerActionsActions instance)
         {
-            if (instance == null || m_Wrapper.m_DashActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_DashActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Add(instance);
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @Punch.started += instance.OnPunch;
+            @Punch.performed += instance.OnPunch;
+            @Punch.canceled += instance.OnPunch;
         }
 
-        private void UnregisterCallbacks(IDashActions instance)
+        private void UnregisterCallbacks(IPlayerActionsActions instance)
         {
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @Punch.started -= instance.OnPunch;
+            @Punch.performed -= instance.OnPunch;
+            @Punch.canceled -= instance.OnPunch;
         }
 
-        public void RemoveCallbacks(IDashActions instance)
+        public void RemoveCallbacks(IPlayerActionsActions instance)
         {
-            if (m_Wrapper.m_DashActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IDashActions instance)
+        public void SetCallbacks(IPlayerActionsActions instance)
         {
-            foreach (var item in m_Wrapper.m_DashActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayerActionsActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_DashActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public DashActions @Dash => new DashActions(this);
+    public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
 
     // Flip
     private readonly InputActionMap m_Flip;
@@ -392,9 +421,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnCamera(InputAction.CallbackContext context);
     }
-    public interface IDashActions
+    public interface IPlayerActionsActions
     {
         void OnDash(InputAction.CallbackContext context);
+        void OnPunch(InputAction.CallbackContext context);
     }
     public interface IFlipActions
     {

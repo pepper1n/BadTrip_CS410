@@ -14,14 +14,20 @@ namespace BT
         [HideInInspector]
         public Transform myTransform;
 
+        public Transform RootTransform;
+
         public AnimatorHandler animatorHandler;
 
         public new Rigidbody rigidbody;
         public GameObject normalCamera;
 
+        public bool isSprinting;
+
         [Header("Stats")]
         [SerializeField]
         float movementSpeed = 5;
+        [SerializeField]
+        float sprintSpeed = 7;
         [SerializeField]
         float rotationSpeed = 10;
 
@@ -64,32 +70,95 @@ namespace BT
             myTransform.rotation = targetRotation;
         }
 
-        #endregion
 
         public void Update()
         {
             float delta = Time.deltaTime;
 
+            isSprinting = inputHandler.b_Input;
             inputHandler.TickInput(delta);
+            HandleMovement(delta);
+            HandleRollingAndSprinting(delta);
+            HandleAttack(delta);
+            
+ 
+
+        }
+
+        public void HandleMovement(float delta)
+        {
+            if (inputHandler.rollFlag)
+            {
+                return;
+            }
 
             moveDirection = cameraObject.forward * inputHandler.vertical;
             moveDirection += cameraObject.right * inputHandler.horizontal;
             moveDirection.Normalize();
 
             float speed = movementSpeed;
-            moveDirection *= speed;
+            if (inputHandler.sprintFlag)
+            {
+                speed = sprintSpeed;
+                isSprinting = true;
+                moveDirection *= speed;
+            }
+            else
+            {
+                moveDirection *= speed;
+            }
+
+            
+            moveDirection.y = 0;
 
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
             rigidbody.velocity = projectedVelocity;
 
-            animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0);
+            animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, isSprinting);
 
             if (animatorHandler.canRotate)
             {
                 HandleRotation(delta);
             }
- 
+        }
 
+        public void HandleRollingAndSprinting(float delta)
+        {
+            if (animatorHandler.anim.GetBool("isInteracting"))
+            {
+                return;
+            }
+            if (inputHandler.rollFlag)
+            {
+                moveDirection = cameraObject.forward * inputHandler.vertical;
+                moveDirection += cameraObject.right * inputHandler.horizontal;
+
+                if (inputHandler.moveAmount > 0)
+                {
+                    animatorHandler.PlayTargetAnimation("Dashing", true);
+                    moveDirection.y = 0;
+                    Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
+                    myTransform.rotation = rollRotation;
+
+                }
+                else
+                {
+                    animatorHandler.PlayTargetAnimation("Dash Back", true);
+                }
+            }
+        }
+        #endregion
+
+        public void HandleAttack(float delta)
+        {
+            if (animatorHandler.anim.GetBool("isInteracting"))
+            {
+                return;
+            }
+            if (inputHandler.punchFlag && !(inputHandler.rollFlag))
+            {
+                animatorHandler.PlayTargetAnimation("Punch", true);
+            }
         }
     }
 }
