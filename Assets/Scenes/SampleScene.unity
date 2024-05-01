@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17918608, g: 0.22436854, b: 0.30611867, a: 1}
+  m_IndirectSpecularColor: {r: 0.17918651, g: 0.22436924, b: 0.30611986, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3363,6 +3363,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4733772755456769034, guid: 3ad7a1cffb2556547a8b7e60fd320431, type: 3}
   m_PrefabInstance: {fileID: 801083432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &809806175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5702506169279981622, guid: 2a99bfff66c641f4688c4be4cc23733a, type: 3}
+  m_PrefabInstance: {fileID: 1787910462}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &813072080
 PrefabInstance:
@@ -6705,6 +6710,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7186397052036007447, guid: 7c7baabdbc078cb4098d5880fc72c0f3, type: 3}
   m_PrefabInstance: {fileID: 1456458123}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1460413105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1460413106}
+  m_Layer: 0
+  m_Name: Bullet Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1460413106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460413105}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.75900006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 335570347}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1466157222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8175,9 +8211,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3923858452294093558, guid: 2a99bfff66c641f4688c4be4cc23733a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 432082201}
+    - target: {fileID: 3923858452294093558, guid: 2a99bfff66c641f4688c4be4cc23733a, type: 3}
       propertyPath: bulletSpawnPoint
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1460413106}
     - target: {fileID: 4842544266827078055, guid: 2a99bfff66c641f4688c4be4cc23733a, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
@@ -8259,6 +8299,9 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 4799130701538184832, guid: 2a99bfff66c641f4688c4be4cc23733a, type: 3}
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5088189144441182548, guid: 2a99bfff66c641f4688c4be4cc23733a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1460413106}
     - targetCorrespondingSourceObject: {fileID: 5088189144441182548, guid: 2a99bfff66c641f4688c4be4cc23733a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 494509857}
@@ -9554,6 +9597,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 687002751107663594, guid: e633d52809e7010459474c745d34a5c5, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 809806175}
     - target: {fileID: 687002751107663594, guid: e633d52809e7010459474c745d34a5c5, type: 3}
       propertyPath: enemySpawnPoint
       value: 
