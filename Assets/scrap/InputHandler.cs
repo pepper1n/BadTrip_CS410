@@ -19,18 +19,21 @@ namespace BT
         public bool punchFlag;
         public bool rollFlag;
         public bool sprintFlag;
+        public bool pickupFlag;
         public float rollInputTimer;
         public bool isInteracting;
 
         PlayerControls inputActions;
         CameraHandler cameraHandler;
+        WeaponEquip weaponEquip;
 
         Vector2 movementInput;
         Vector2 cameraInput;
 
-        void Awake()
+        void Start()
         {
             cameraHandler = CameraHandler.singleton;
+            weaponEquip = GetComponent<WeaponEquip>();
         }
 
         private void FixedUpdate()
@@ -67,6 +70,7 @@ namespace BT
             MoveInput(delta);
             HandleDashInput(delta);
             HandleAttackInput(delta);
+            HandleWeaponEquip();
         }
 
         private void MoveInput(float delta)
@@ -104,6 +108,30 @@ namespace BT
             if (p_Input)
             {
                 punchFlag = true;
+            }
+        }
+
+        private void HandleWeaponEquip()
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                pickupFlag = true;
+            }
+            else
+            {
+                pickupFlag = false;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                weaponEquip.SwitchWeapon(weaponEquip.Weapon1);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                weaponEquip.SwitchWeapon(weaponEquip.Weapon2);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                weaponEquip.SwitchWeapon(weaponEquip.Weapon3);
             }
         }
     }
