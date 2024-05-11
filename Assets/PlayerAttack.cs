@@ -18,7 +18,7 @@ namespace BT
 
         private void OnTriggerStay(Collider other)
         {
-            Debug.Log("Inside Trigger");
+            //Debug.Log("Inside Trigger");
             if (other.gameObject.tag == "Hostile" && inputHandler.punchFlag)
             {
                 //other.GetComponentInParent<HostileBehavior>().Kill();

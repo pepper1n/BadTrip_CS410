@@ -21,7 +21,7 @@ public class StateFlipping : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             isTrippy = !isTrippy;
             Renderer[] renderers = FindObjectsOfType<Renderer>();

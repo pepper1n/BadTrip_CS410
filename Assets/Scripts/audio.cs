@@ -17,7 +17,7 @@ public class audio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             // If the audio is playing, stop it; otherwise, play it
             if (audioSource.isPlaying)

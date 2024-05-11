@@ -18,9 +18,10 @@ namespace BT
 
         void OnTriggerStay(Collider player)
         {
-            if (inputHandler.pickupFlag)
+            if (inputHandler.pickupFlag && weaponEquip.Weapon3 == null)
             {
                 weaponEquip.PickupWeapon(lootItem);
+                Destroy(gameObject);
             }
         }
     }

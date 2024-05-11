@@ -30,6 +30,8 @@ namespace BT
         float sprintSpeed = 7;
         [SerializeField]
         float rotationSpeed = 10;
+        [SerializeField]
+        float jumpForce = 1000;
 
 
         void Start()
@@ -80,6 +82,7 @@ namespace BT
             HandleMovement(delta);
             HandleRollingAndSprinting(delta);
             HandleAttack(delta);
+            HandleJump(delta);
             
  
 
@@ -108,11 +111,13 @@ namespace BT
                 moveDirection *= speed;
             }
 
-            
-            moveDirection.y = 0;
+            if (!animatorHandler.anim.GetBool("isInteracting"))
+            {
+                moveDirection.y = 0;
+            }
 
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
-            rigidbody.velocity = projectedVelocity;
+            rigidbody.velocity = new Vector3(projectedVelocity.x, rigidbody.velocity.y, projectedVelocity.z);
 
             animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, isSprinting);
 
@@ -158,6 +163,19 @@ namespace BT
             if (inputHandler.punchFlag && !(inputHandler.rollFlag))
             {
                 animatorHandler.PlayTargetAnimation("Punch", true);
+            }
+        }
+
+        public void HandleJump(float delta)
+        {
+            if (animatorHandler.anim.GetBool("isInteracting"))
+            {
+                return;
+            }
+            if (inputHandler.jumpFlag)
+            {
+                animatorHandler.PlayTargetAnimation("Jump", true);
+                rigidbody.AddForce(new Vector3(0, 1, 0) * jumpForce * delta, ForceMode.Impulse);
             }
         }
     }

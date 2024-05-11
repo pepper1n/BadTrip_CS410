@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         direction = (player.transform.position - transform.position);
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             if (state == 0)
             {

@@ -15,11 +15,13 @@ namespace BT
 
         public bool b_Input;
         public bool p_Input;
+        public bool j_Input;
 
         public bool punchFlag;
         public bool rollFlag;
         public bool sprintFlag;
         public bool pickupFlag;
+        public bool jumpFlag;
         public float rollInputTimer;
         public bool isInteracting;
 
@@ -69,6 +71,7 @@ namespace BT
         {
             MoveInput(delta);
             HandleDashInput(delta);
+            HandleJump();
             HandleAttackInput(delta);
             HandleWeaponEquip();
         }
@@ -133,6 +136,20 @@ namespace BT
             {
                 weaponEquip.SwitchWeapon(weaponEquip.Weapon3);
             }
+        }
+
+        private void HandleJump()
+        {
+            j_Input = inputActions.PlayerActions.Jump.IsPressed();
+            if (j_Input)
+            {
+                jumpFlag = true;
+            }
+            else
+            {
+                jumpFlag = false;
+            }
+
         }
     }
 }
