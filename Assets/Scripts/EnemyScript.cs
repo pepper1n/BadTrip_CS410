@@ -73,6 +73,7 @@ public class Enemy : MonoBehaviour
                     Vector3 shootingDirection = (player.transform.position - transform.position).normalized;
                     bullet.GetComponent<Rigidbody>().velocity = shootingDirection * bulletSpeed;
                 }
+                
 
             }
         }
