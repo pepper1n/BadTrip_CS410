@@ -224,7 +224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1152707129}
-  - component: {fileID: 1152707128}
+  - component: {fileID: 1152707130}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -232,22 +232,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1152707128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152707127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1b84e8c67a85845bee3a34456d94d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: {x: 10, y: 10}
-  startPos: 0
-  offset: {x: 10, y: 10}
-  room: {fileID: 7633575498576695660, guid: 5022e236b1e158644b32cdd4287f95ab, type: 3}
 --- !u!4 &1152707129
 Transform:
   m_ObjectHideFlags: 0
@@ -263,6 +247,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1152707130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152707127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1b84e8c67a85845bee3a34456d94d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 10, y: 10}
+  startPos: 0
+  offset: {x: 30, y: 30}
+  rooms:
+  - room: {fileID: 7633575498576695660, guid: cd2a8290fe61c5646b059efa6372db20, type: 3}
+    minPosition: {x: 2, y: 2}
+    maxPosition: {x: 10, y: 10}
+    obligatory: 0
+    priority: 1
+  - room: {fileID: 7633575498576695660, guid: 5894d1fb215821c4b968f7eac45e4475, type: 3}
+    minPosition: {x: 2, y: 2}
+    maxPosition: {x: 10, y: 10}
+    obligatory: 0
+    priority: 1
+  - room: {fileID: 7633575498576695660, guid: 99b49a8ff3955aa43abb0f6feb8a63a5, type: 3}
+    minPosition: {x: 5, y: 5}
+    maxPosition: {x: 8, y: 8}
+    obligatory: 1
+    priority: 1
+  - room: {fileID: 7633575498576695660, guid: 5022e236b1e158644b32cdd4287f95ab, type: 3}
+    minPosition: {x: 0, y: 0}
+    maxPosition: {x: 2, y: 2}
+    obligatory: 0
+    priority: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
