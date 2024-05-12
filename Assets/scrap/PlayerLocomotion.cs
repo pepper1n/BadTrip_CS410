@@ -79,10 +79,10 @@ namespace BT
 
             isSprinting = inputHandler.b_Input;
             inputHandler.TickInput(delta);
+            HandleJump(delta);
             HandleMovement(delta);
             HandleRollingAndSprinting(delta);
             HandleAttack(delta);
-            HandleJump(delta);
             
  
 
@@ -111,10 +111,10 @@ namespace BT
                 moveDirection *= speed;
             }
 
-            if (!animatorHandler.anim.GetBool("isInteracting"))
-            {
-                moveDirection.y = 0;
-            }
+            //if (!animatorHandler.anim.GetBool("isInteracting"))
+            //{
+            //    moveDirection.y = 0;
+            //}
 
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
             rigidbody.velocity = new Vector3(projectedVelocity.x, rigidbody.velocity.y, projectedVelocity.z);
@@ -174,7 +174,7 @@ namespace BT
             }
             if (inputHandler.jumpFlag)
             {
-                animatorHandler.PlayTargetAnimation("Jump", true);
+                animatorHandler.PlayTargetAnimation("Jump", false);
                 rigidbody.AddForce(new Vector3(0, 1, 0) * jumpForce * delta, ForceMode.Impulse);
             }
         }
