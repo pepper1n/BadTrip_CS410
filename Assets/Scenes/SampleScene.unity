@@ -294,6 +294,10 @@ PrefabInstance:
       propertyPath: Sword
       value: 
       objectReference: {fileID: 976600625}
+    - target: {fileID: 6198516586454122351, guid: dff67c0671714114aab3f3dc48d6169d, type: 3}
+      propertyPath: Hammer
+      value: 
+      objectReference: {fileID: 1571991953}
     - target: {fileID: 8651486178280997017, guid: dff67c0671714114aab3f3dc48d6169d, type: 3}
       propertyPath: player
       value: 
@@ -407,6 +411,13 @@ MonoBehaviour:
   attackCollider: {fileID: 0}
   swingSpeed: 0.5
   damage: 10
+  attackDelay: 1
+  attackTimer: 1
+--- !u!1 &1571991953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6121897534006816648, guid: dff67c0671714114aab3f3dc48d6169d, type: 3}
+  m_PrefabInstance: {fileID: 517697800}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1744864113 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3779468922624802800, guid: dff67c0671714114aab3f3dc48d6169d, type: 3}
@@ -428,6 +439,8 @@ MonoBehaviour:
   attackCollider: {fileID: 0}
   swingSpeed: 0.5
   damage: 10
+  attackDelay: 1
+  attackTimer: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

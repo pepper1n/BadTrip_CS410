@@ -7,6 +7,8 @@ namespace BT
     public class WeaponEquip : MonoBehaviour
     {
         public GameObject Sword;
+        public GameObject Hammer;
+
         public GameObject Weapon1 = null;
         public GameObject Weapon2 = null;
         public GameObject Weapon3 = null;
