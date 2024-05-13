@@ -365,11 +365,11 @@ MonoBehaviour:
   size: {x: 5, y: 5}
   startPos: 0
   rooms:
-  - room: {fileID: 7633575498576695660, guid: de95950711cc2d04f9f77539ddec3c45, type: 3}
+  - room: {fileID: 7633575498576695660, guid: 19cb77b503480154db1a51a98ec99ec9, type: 3}
     minPosition: {x: 0, y: 0}
     maxPosition: {x: 7, y: 7}
     obligatory: 0
-  - room: {fileID: 7633575498576695660, guid: 19cb77b503480154db1a51a98ec99ec9, type: 3}
+  - room: {fileID: 7633575498576695660, guid: de95950711cc2d04f9f77539ddec3c45, type: 3}
     minPosition: {x: 0, y: 0}
     maxPosition: {x: 7, y: 7}
     obligatory: 0
