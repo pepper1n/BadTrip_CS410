@@ -312,33 +312,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 1152707127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1b84e8c67a85845bee3a34456d94d2, type: 3}
+  m_Script: {fileID: 11500000, guid: b46f2759d2790c74b9bf581c62bf2530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 10, y: 10}
+  size: {x: 7, y: 7}
   startPos: 0
-  offset: {x: 30, y: 30}
   rooms:
-  - room: {fileID: 7633575498576695660, guid: cd2a8290fe61c5646b059efa6372db20, type: 3}
-    minPosition: {x: 2, y: 2}
-    maxPosition: {x: 10, y: 10}
-    obligatory: 0
-    priority: 1
-  - room: {fileID: 7633575498576695660, guid: 5894d1fb215821c4b968f7eac45e4475, type: 3}
-    minPosition: {x: 2, y: 2}
-    maxPosition: {x: 10, y: 10}
-    obligatory: 0
-    priority: 1
-  - room: {fileID: 7633575498576695660, guid: 99b49a8ff3955aa43abb0f6feb8a63a5, type: 3}
-    minPosition: {x: 5, y: 5}
-    maxPosition: {x: 8, y: 8}
-    obligatory: 1
-    priority: 1
-  - room: {fileID: 7633575498576695660, guid: 5022e236b1e158644b32cdd4287f95ab, type: 3}
+  - room: {fileID: 7633575498576695660, guid: de95950711cc2d04f9f77539ddec3c45, type: 3}
     minPosition: {x: 0, y: 0}
-    maxPosition: {x: 2, y: 2}
+    maxPosition: {x: 7, y: 7}
     obligatory: 0
-    priority: 0
+  - room: {fileID: 7633575498576695660, guid: 19cb77b503480154db1a51a98ec99ec9, type: 3}
+    minPosition: {x: 0, y: 0}
+    maxPosition: {x: 7, y: 7}
+    obligatory: 0
+  - room: {fileID: 7633575498576695660, guid: 5894d1fb215821c4b968f7eac45e4475, type: 3}
+    minPosition: {x: 0, y: 0}
+    maxPosition: {x: 7, y: 7}
+    obligatory: 0
+  - room: {fileID: 7633575498576695660, guid: 99b49a8ff3955aa43abb0f6feb8a63a5, type: 3}
+    minPosition: {x: 0, y: 0}
+    maxPosition: {x: 0, y: 0}
+    obligatory: 1
+  - room: {fileID: 7633575498576695660, guid: cd2a8290fe61c5646b059efa6372db20, type: 3}
+    minPosition: {x: 4, y: 4}
+    maxPosition: {x: 7, y: 7}
+    obligatory: 0
+  - room: {fileID: 7633575498576695660, guid: 7905b7c63bf509d4f9d258fd3cc7656d, type: 3}
+    minPosition: {x: 1, y: 1}
+    maxPosition: {x: 5, y: 5}
+    obligatory: 0
+  offset: {x: 30, y: 30}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
