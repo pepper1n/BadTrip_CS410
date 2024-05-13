@@ -31,7 +31,12 @@ namespace BT
         [SerializeField]
         float rotationSpeed = 10;
         [SerializeField]
-        float jumpForce = 1000;
+        public float jumpForce = 1000;
+        public float jumpDelay = 0.2f;
+        float jumpTimer = 0;
+        public float jumpCount = 1;
+        float jumps = 0;
+        //public bool falling = false;
 
 
         void Start()
@@ -166,16 +171,45 @@ namespace BT
             }
         }
 
+        public bool CheckIfGrounded()
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, .5f))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void HandleJump(float delta)
         {
+            if (CheckIfGrounded())
+            {
+                jumps = 0;
+                jumpTimer = jumpDelay;
+                //falling = false;
+            }
+            else
+            {
+                //falling = true;
+            }
             if (animatorHandler.anim.GetBool("isInteracting"))
             {
                 return;
             }
-            if (inputHandler.jumpFlag)
+            if (inputHandler.jumpFlag && jumpTimer >= jumpDelay && jumps < jumpCount)
             {
+                jumps += 1;
+                jumpTimer = 0;
                 animatorHandler.PlayTargetAnimation("Jump", false);
                 rigidbody.AddForce(new Vector3(0, 1, 0) * jumpForce * delta, ForceMode.Impulse);
+            }
+            else
+            {
+                jumpTimer += delta;
             }
         }
     }

@@ -12,8 +12,9 @@ public class Swap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        
+        //currentEnemy = gameObject;
+        //prefab1 = gameObject;
+        //prefab2 = gameObject;
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class Swap : MonoBehaviour
     {
         if(gameObject == prefab2)
         {
-            Debug.Log("test");
+            //Debug.Log("test");
         }
         bool state = sf.isTrippy;
         if(!state && gameObject == prefab1)

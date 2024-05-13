@@ -14,15 +14,23 @@ namespace BT
         void Start()
         {
             pickupRange = GetComponent<CapsuleCollider>();
+            inputHandler = GameObject.Find("Player").GetComponent<InputHandler>();
+            weaponEquip = GameObject.Find("Player").GetComponent<WeaponEquip>();
+            lootItem = weaponEquip.Sword;
         }
 
-        void OnTriggerStay(Collider player)
+        void GiveWeapon()
         {
             if (inputHandler.pickupFlag && weaponEquip.Weapon3 == null)
             {
                 weaponEquip.PickupWeapon(lootItem);
                 Destroy(gameObject);
             }
+        }
+
+        void OnTriggerStay(Collider player)
+        {
+            GiveWeapon();
         }
     }
 }

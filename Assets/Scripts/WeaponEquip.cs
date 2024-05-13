@@ -6,27 +6,28 @@ namespace BT
 {
     public class WeaponEquip : MonoBehaviour
     {
+        public GameObject Sword;
         public GameObject Weapon1 = null;
         public GameObject Weapon2 = null;
         public GameObject Weapon3 = null;
         private GameObject activeWeapon;
-        private GameObject previousWeapon = null;
+        private GameObject previousWeapon;
 
         public void PickupWeapon(GameObject newWeapon)
         {
             if (newWeapon != null)
             {
-                if (Weapon1 == null)
+                if (!Weapon1)
                 {
                     Weapon1 = newWeapon;
                     SwitchWeapon(Weapon1);
                 }
-                else if (Weapon2 == null)
+                else if (!Weapon2)
                 {
                     Weapon2 = newWeapon;
                     SwitchWeapon(Weapon2);
                 }
-                else if (Weapon3 == null)
+                else if (!Weapon3)
                 {
                     Weapon3 = newWeapon;
                     SwitchWeapon(Weapon3);

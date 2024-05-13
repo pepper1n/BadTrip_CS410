@@ -883,6 +883,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0a9d79ee96ba9a541b5edbc6637a519c, type: 3}
   m_PrefabInstance: {fileID: 609928010}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &472821662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2136745431783011028, guid: dff67c0671714114aab3f3dc48d6169d, type: 3}
+  m_PrefabInstance: {fileID: 8727206342857379436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &472821667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472821662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb09ca1eaa1ef194e97d77dc6930752a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 570708383}
+  attackCollider: {fileID: 0}
+  swingSpeed: 0.5
+  damage: 10
 --- !u!1001 &478484360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3361,10 +3382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dfd103e6dd8b4a4ea3bbc5c595f5616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trippyFloor: {fileID: 2100000, guid: 66794689de031044e85d554fdabb2ee0, type: 2}
-  trippyWall: {fileID: 2100000, guid: 33ddebb0faa896746ba1132b688bbd5f, type: 2}
-  fleshFloor: {fileID: 2100000, guid: 729f45fb2f72c1e4eaa80d9ba643bdef, type: 2}
-  fleshWall: {fileID: 2100000, guid: a49dca0289af28c4fb31059bae2100bc, type: 2}
   isTrippy: 1
 --- !u!4 &1778571362
 Transform:
@@ -4059,7 +4076,8 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 570708383}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6867860151052960423, guid: 7b0fecf3778f03c45a3c526d2aa1ad05, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4250,10 +4268,17 @@ PrefabInstance:
       propertyPath: normalCamera
       value: 
       objectReference: {fileID: 1753480400}
+    - target: {fileID: 6198516586454122351, guid: dff67c0671714114aab3f3dc48d6169d, type: 3}
+      propertyPath: Sword
+      value: 
+      objectReference: {fileID: 1920610485}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2136745431783011028, guid: dff67c0671714114aab3f3dc48d6169d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 472821667}
   m_SourcePrefab: {fileID: 100100000, guid: dff67c0671714114aab3f3dc48d6169d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

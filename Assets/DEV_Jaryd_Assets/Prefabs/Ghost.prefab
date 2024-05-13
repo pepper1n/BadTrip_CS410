@@ -967,13 +967,15 @@ GameObject:
   - component: {fileID: 789764704778504744}
   - component: {fileID: 3988494015754082582}
   - component: {fileID: 4750391821827403182}
+  - component: {fileID: 7586574111059973765}
+  - component: {fileID: 4641794910910499397}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &756356863720085499
 Transform:
   m_ObjectHideFlags: 0
@@ -1083,3 +1085,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c974bcec0b85c40b7f5aa18890c51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 5
+  bulletPrefab: {fileID: 0}
+  bulletSpawnPoint: {fileID: 0}
+  bulletSpeed: 10
+  shootFrequency: 1
+  shootingRange: 10
+  followRange: 20
+  player: {fileID: 0}
+  direction: {x: 0, y: 0, z: 0}
+  rotationSpeed: 5
+--- !u!114 &7586574111059973765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9064654990055101355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192c244dad9ed9445b5b0f58235d2170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
+--- !u!136 &4641794910910499397
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9064654990055101355}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}

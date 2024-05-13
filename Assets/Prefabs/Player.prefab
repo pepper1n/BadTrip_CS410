@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2708105015653681361}
   m_Layer: 10
   m_Name: Sword
-  m_TagString: Untagged
+  m_TagString: stateStructure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,6 +60,10 @@ PrefabInstance:
     - target: {fileID: 100006, guid: 47377a9aa6b50294a865e21fe968af4d, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 47377a9aa6b50294a865e21fe968af4d, type: 3}
+      propertyPath: m_TagString
+      value: trippyStructure
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 47377a9aa6b50294a865e21fe968af4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -166,6 +170,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1624047688248190055, guid: f87c2e55b95e4894c9c30592cce6d287, type: 3}
+      propertyPath: m_TagString
+      value: fleshStructure
+      objectReference: {fileID: 0}
     - target: {fileID: 2144301008763993821, guid: f87c2e55b95e4894c9c30592cce6d287, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.039
@@ -225,6 +233,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1624047688248190055, guid: f87c2e55b95e4894c9c30592cce6d287, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6653600821623540462}
+    - targetCorrespondingSourceObject: {fileID: 1624047688248190055, guid: f87c2e55b95e4894c9c30592cce6d287, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 280831296106081735}
   m_SourcePrefab: {fileID: 100100000, guid: f87c2e55b95e4894c9c30592cce6d287, type: 3}
 --- !u!1 &3779468922624802800 stripped
 GameObject:
@@ -254,6 +265,24 @@ CapsuleCollider:
   m_Height: 1.5808088
   m_Direction: 1
   m_Center: {x: -0.000000083306055, y: 0.58848184, z: -0.000000042066528}
+--- !u!114 &280831296106081735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3779468922624802800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb09ca1eaa1ef194e97d77dc6930752a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2578380506995650106}
+  attackCollider: {fileID: 0}
+  swingSpeed: 0.5
+  damage: 10
+  attackDelay: 1
+  attackTimer: 1
 --- !u!4 &4555547537970144586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2144301008763993821, guid: f87c2e55b95e4894c9c30592cce6d287, type: 3}
@@ -458,9 +487,6 @@ PrefabInstance:
       addedObject: {fileID: 8651486178280997017}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70f115b8a919e224f97803b9e6408d0d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 668585467233007196}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70f115b8a919e224f97803b9e6408d0d, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6198516586454122351}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70f115b8a919e224f97803b9e6408d0d, type: 3}
       insertIndex: -1
@@ -578,6 +604,8 @@ MonoBehaviour:
   sprintSpeed: 7
   rotationSpeed: 10
   jumpForce: 50
+  jumpDelay: 0.2
+  jumpCount: 1
 --- !u!114 &4933655735469483570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,19 +636,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2578380506995650106}
   PunchTime: 0
---- !u!114 &668585467233007196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2578380506995650106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb09ca1eaa1ef194e97d77dc6930752a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  punchCollider: {fileID: 5626848266920103805}
 --- !u!114 &6198516586454122351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,6 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa68c80d7a0f714ab0cf894c50cab78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Sword: {fileID: 2589378874164842590}
   Weapon1: {fileID: 0}
   Weapon2: {fileID: 0}
   Weapon3: {fileID: 0}
