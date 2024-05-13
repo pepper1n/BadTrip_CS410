@@ -11,8 +11,14 @@ public class RoomBehaviour : MonoBehaviour
     {
         for (int i = 0; i < status.Length; i++)
         {
-            doors[i].SetActive(status[i]);
-            walls[i].SetActive(!status[i]);
+            if (doors[i] != null)
+            {
+                doors[i].SetActive(status[i]);
+            }
+            if (walls[i] != null) 
+            {
+                walls[i].SetActive(!status[i]);
+            }
         }
     }
 }
