@@ -20,13 +20,13 @@ public class audio : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             // If the audio is playing, stop it; otherwise, play it
-            if (audioSource.isPlaying)
+            if (audioSource.mute == false)
             {
-                audioSource.Stop();
+                audioSource.mute = true;
             }
             else
             {
-                audioSource.Play();
+                audioSource.mute = false; 
             }
         }
     }

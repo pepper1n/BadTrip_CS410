@@ -30,35 +30,20 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction = (player.transform.position - transform.position);   
-        if (Input.GetKeyDown(KeyCode.F))
+        direction = (player.transform.position - transform.position);
+        if (player == null)
         {
-            if (state == 0)
-            {
-                state = 1;
-            }else
-            {
-                state = 0;
-            }
+            player = GameObject.FindWithTag("Player");
         }
-        if (state == 0)
-        {
-            this.GetComponent<MeshRenderer>().material = material1;
-
-        }
-        if(state == 1)
-        {
-            this.GetComponent<MeshRenderer>().material = material2;
-
-        }
+     
         Move();
-        Shoot();
+
         
     }
 
     void Shoot()
     {
-        if (state == 0)
+     /*   if (state == 0)
         {
             shootTimer += Time.deltaTime;
             if (Vector3.Distance(transform.position, player.transform.position) < shootingRange)
@@ -73,16 +58,14 @@ public class Enemy : MonoBehaviour
                 }
 
             }
-        }
+        }*/
     }
 
     void Move()
     {
-        if (state == 1)
-        {
-            
-            direction.Normalize();
-            transform.position += direction * enemySpeed * Time.deltaTime;
-        }
+      
+        direction.Normalize();
+        transform.position += direction * enemySpeed * Time.deltaTime;
+
     }
 }
