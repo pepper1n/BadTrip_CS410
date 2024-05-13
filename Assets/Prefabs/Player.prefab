@@ -574,7 +574,7 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   normalCamera: {fileID: 0}
   isSprinting: 0
-  movementSpeed: 50
+  movementSpeed: 5
   sprintSpeed: 7
   rotationSpeed: 10
   jumpForce: 50
