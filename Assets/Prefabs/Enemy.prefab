@@ -170,7 +170,7 @@ MonoBehaviour:
   bulletSpeed: 10
   shootFrequency: 1
   shootingRange: 10
-  player: {fileID: 0}
+  player: {fileID: 2578380506995650106, guid: dff67c0671714114aab3f3dc48d6169d, type: 3}
   direction: {x: 0, y: 0, z: 0}
 --- !u!1 &8696730149000573000
 GameObject:

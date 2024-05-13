@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hostile
+  - stateStructure
+  - trippyStructure
+  - fleshStructure
   layers:
   - Default
   - TransparentFX

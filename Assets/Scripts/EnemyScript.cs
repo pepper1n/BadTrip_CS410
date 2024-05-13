@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public Material material2;
     public float enemySpeed = 5;
 
-    private float range;
+
     private int state = 0;
     public float timer = 5;
     public GameObject bulletPrefab;
@@ -19,20 +19,18 @@ public class Enemy : MonoBehaviour
     public float shootingRange = 10f;
     private float shootTimer;
     private float stateTimer;
-    public GameObject player;
+    private GameObject player;
     public Vector3 direction;
     // Start is called before the first frame update
     void Start()
     {
-        range = 1.0f;
-
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        direction = (player.transform.position - transform.position);
+        direction = (player.transform.position - transform.position);   
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (state == 0)

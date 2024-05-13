@@ -9,10 +9,7 @@ using Debug = UnityEngine.Debug;
 
 public class StateFlipping : MonoBehaviour
 {
-    public Material trippyFloor;
-    public Material trippyWall;
-    public Material fleshFloor;
-    public Material fleshWall;
+    GameObject[] stateStructures;
 
     public bool isTrippy = true;
 
@@ -24,28 +21,31 @@ public class StateFlipping : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             isTrippy = !isTrippy;
-            Renderer[] renderers = FindObjectsOfType<Renderer>();
-            foreach (Renderer rend in renderers)
+            GameObject[] stateStructures = GameObject.FindGameObjectsWithTag("stateStructure");
+            foreach (GameObject stateStructure in stateStructures)
             {
-                MeshRenderer meshRenderer = rend.GetComponent<MeshRenderer>();
-                if (meshRenderer != null)
+                Transform[] children = stateStructure.GetComponentsInChildren<Transform>(true);
+                foreach (Transform child in children)
                 {
-                    if (meshRenderer.material.name == "M_TrippyFloor (Instance)" || meshRenderer.material.name == "M_FleshFloor (Instance)")
+                    if (child.CompareTag("trippyStructure") || child.CompareTag("fleshStructure"))
                     {
-                        meshRenderer.material = isTrippy ? trippyFloor : fleshFloor;
-                    }
-                    if (meshRenderer.material.name == "M_TrippyWall (Instance)" || meshRenderer.material.name == "M_FleshWall (Instance)")
-                    {
-                        meshRenderer.material = isTrippy ? trippyWall : fleshWall;
+                        child.gameObject.SetActive(!child.gameObject.activeSelf);
                     }
                 }
             }
-
             Light[] lights = FindObjectsOfType<Light>();
             foreach (Light light in lights)
             {
                 light.color = isTrippy ? trippyColor : fleshColor;
             }
+        }
+    }
+
+    void ToggleActiveState(GameObject[] gameObjects)
+    {
+        foreach (GameObject obj in gameObjects)
+        {
+            obj.SetActive(!obj.activeSelf);
         }
     }
 }

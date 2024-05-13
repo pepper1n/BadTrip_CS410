@@ -7,6 +7,9 @@ namespace BT
     public class PlayerManager : MonoBehaviour
     {
 
+        public static PlayerManager instance;
+        public GameObject player;
+
         InputHandler inputHandler;
         Animator anim;
         public float PunchTime = 0f;
@@ -14,6 +17,16 @@ namespace BT
         // Start is called before the first frame update
         void Start()
         {
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
             inputHandler = GetComponent<InputHandler>();
             anim = GetComponent<Animator>();
         }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2523626137624851052}
   m_Layer: 0
   m_Name: SwordPickup
-  m_TagString: Untagged
+  m_TagString: stateStructure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1624047688248190055, guid: f87c2e55b95e4894c9c30592cce6d287, type: 3}
+      propertyPath: m_TagString
+      value: fleshStructure
+      objectReference: {fileID: 0}
     - target: {fileID: 2144301008763993821, guid: f87c2e55b95e4894c9c30592cce6d287, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -257,6 +261,10 @@ PrefabInstance:
     - target: {fileID: 100006, guid: 47377a9aa6b50294a865e21fe968af4d, type: 3}
       propertyPath: m_Name
       value: Katana w_ Colliders
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 47377a9aa6b50294a865e21fe968af4d, type: 3}
+      propertyPath: m_TagString
+      value: trippyStructure
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 47377a9aa6b50294a865e21fe968af4d, type: 3}
       propertyPath: m_LocalPosition.x
