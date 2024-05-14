@@ -44,15 +44,21 @@ namespace BT
 
         public void SwitchWeapon(GameObject switchedWeapon)
         {
-            if (switchedWeapon == null)
+            if (!switchedWeapon)
             {
                 Debug.Log("No weapon to equip");
             }
             else
             {
-                previousWeapon = activeWeapon;
+                if (activeWeapon)
+                {
+                    previousWeapon = activeWeapon;
+                }
                 activeWeapon = switchedWeapon;
-                previousWeapon.SetActive(false);
+                if (previousWeapon)
+                {
+                    previousWeapon.SetActive(false);
+                }
                 activeWeapon.SetActive(true);
             }
         }

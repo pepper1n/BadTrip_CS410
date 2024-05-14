@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public float enemySpeed = 5;
 
 
-    private int state = 0;
+    //private int state = 0; //commenting out for now so I stop getting the 'unused variable' console message
     public float timer = 5;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;

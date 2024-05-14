@@ -175,7 +175,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -563,7 +563,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -889,6 +889,7 @@ MonoBehaviour:
   sprintFlag: 0
   pickupFlag: 0
   jumpFlag: 0
+  targetFlag: 0
   rollInputTimer: 0
   isInteracting: 0
 --- !u!114 &3555502005621227564

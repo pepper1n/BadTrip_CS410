@@ -12,9 +12,10 @@ public class Swap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //currentEnemy = gameObject;
-        //prefab1 = gameObject;
+        currentEnemy = gameObject;
+        prefab1 = gameObject;
         //prefab2 = gameObject;
+        sf = GameObject.Find("Player").GetComponent<StateFlipping>();
     }
 
     // Update is called once per frame

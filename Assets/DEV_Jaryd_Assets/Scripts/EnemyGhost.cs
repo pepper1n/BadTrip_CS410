@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyGhost : MonoBehaviour
 {
     private float range;
-    private int state = 0;
+    //private int state = 0; //commenting out for now to avoid 'unused variable' console messages
     public float timer = 5;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;

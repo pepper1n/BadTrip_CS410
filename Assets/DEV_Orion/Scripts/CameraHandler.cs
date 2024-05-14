@@ -15,6 +15,7 @@ public class CameraHandler : MonoBehaviour
     public static CameraHandler singleton;
 
     public float lookSpeed = .1f;
+    private float currentLookSpeed;
     public float followSpeed = .1f;
     public float pivotSpeed = .03f;
 
@@ -38,6 +39,7 @@ public class CameraHandler : MonoBehaviour
         defaultPosition = cameraTransform.localPosition.z;
         ignoreLayers = ~(1 << 8 | 1 << 9 | 1 << 10);
         Cursor.lockState = CursorLockMode.Locked;
+        currentLookSpeed = lookSpeed;
     }
 
     public void FollowTarget(float delta)

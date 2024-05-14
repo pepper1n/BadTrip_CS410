@@ -967,8 +967,9 @@ GameObject:
   - component: {fileID: 789764704778504744}
   - component: {fileID: 3988494015754082582}
   - component: {fileID: 4750391821827403182}
-  - component: {fileID: 7586574111059973765}
   - component: {fileID: 4641794910910499397}
+  - component: {fileID: 5994005241850761243}
+  - component: {fileID: 7586574111059973765}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -1086,8 +1087,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 5
-  bulletPrefab: {fileID: 0}
-  bulletSpawnPoint: {fileID: 0}
+  bulletPrefab: {fileID: 3390982928038222045}
+  bulletSpawnPoint: {fileID: 1231150104062054116}
   bulletSpeed: 10
   shootFrequency: 1
   shootingRange: 10
@@ -1095,19 +1096,6 @@ MonoBehaviour:
   player: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
   rotationSpeed: 5
---- !u!114 &7586574111059973765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9064654990055101355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 192c244dad9ed9445b5b0f58235d2170, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 30
 --- !u!136 &4641794910910499397
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1131,3 +1119,43 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!54 &5994005241850761243
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9064654990055101355}
+  serializedVersion: 4
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7586574111059973765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9064654990055101355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192c244dad9ed9445b5b0f58235d2170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30

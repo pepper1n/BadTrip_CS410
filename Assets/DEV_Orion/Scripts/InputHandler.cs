@@ -22,6 +22,7 @@ namespace BT
         public bool sprintFlag;
         public bool pickupFlag;
         public bool jumpFlag;
+        public bool targetFlag;
         public float rollInputTimer;
         public bool isInteracting;
 
@@ -69,6 +70,7 @@ namespace BT
 
         public void TickInput(float delta)
         {
+            HandleTargetMode();
             MoveInput(delta);
             HandleDashInput(delta);
             HandleJump();
@@ -150,6 +152,18 @@ namespace BT
                 jumpFlag = false;
             }
 
+        }
+
+        private void HandleTargetMode()
+        {
+            if (Input.GetMouseButton(1))
+            {
+                targetFlag = true;
+            }
+            else
+            {
+                targetFlag = false;
+            }
         }
     }
 }

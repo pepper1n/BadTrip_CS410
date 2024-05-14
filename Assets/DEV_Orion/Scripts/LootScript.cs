@@ -32,7 +32,7 @@ namespace BT
 
         void GiveWeapon()
         {
-            if (inputHandler.pickupFlag && weaponEquip.Weapon3 == null)
+            if (inputHandler.pickupFlag && !weaponEquip.Weapon3)
             {
                 weaponEquip.PickupWeapon(lootItem);
                 Destroy(gameObject);
