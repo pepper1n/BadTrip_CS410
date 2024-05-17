@@ -14,14 +14,13 @@ GameObject:
   - component: {fileID: 711535016712868770}
   - component: {fileID: 1517733755505225690}
   - component: {fileID: 5089496252280500117}
-  - component: {fileID: 6867860151052960423}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Hostile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &226559866272777650
 Transform:
   m_ObjectHideFlags: 0
@@ -122,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192c244dad9ed9445b5b0f58235d2170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 30
 --- !u!54 &5089496252280500117
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,29 +149,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6867860151052960423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2753301866585987008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3932475d32cda8b43bf31be9daa94845, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material1: {fileID: 2100000, guid: 178120da0a1afa64e9fff5f4f6572523, type: 2}
-  material2: {fileID: 2100000, guid: 50063a407b3587f498854d712947b753, type: 2}
-  enemySpeed: 5
-  timer: 5
-  bulletPrefab: {fileID: 6627352940360703566}
-  bulletSpawnPoint: {fileID: 7492478514859991360}
-  bulletSpeed: 10
-  shootFrequency: 1
-  shootingRange: 10
-  player: {fileID: 2578380506995650106, guid: dff67c0671714114aab3f3dc48d6169d, type: 3}
-  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &8696730149000573000
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,11 +241,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbcec476d0f887f47a689f6c4901cc2f, type: 3}
---- !u!1 &6627352940360703566 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 657702011173477361, guid: dbcec476d0f887f47a689f6c4901cc2f, type: 3}
-  m_PrefabInstance: {fileID: 5970003013695767999}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8774819164148428961 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3107445902680421662, guid: dbcec476d0f887f47a689f6c4901cc2f, type: 3}
