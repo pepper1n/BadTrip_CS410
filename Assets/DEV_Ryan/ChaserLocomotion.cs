@@ -14,18 +14,15 @@ public class ChaserLocomotion : MonoBehaviour
 
     void Update()
     {
-        // Calculate direction to the player while maintaining the same y-coordinate for the enemy
         Vector3 directionToPlayer = player.position - transform.position;
-        directionToPlayer.y = 0; // Keep the y coordinate the same to prevent looking up/down
+        directionToPlayer.y = 0;
 
-        // Rotate the enemy to face the player
         if (directionToPlayer != Vector3.zero)
         {
             Quaternion rotationToPlayer = Quaternion.LookRotation(directionToPlayer);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotationToPlayer, Time.deltaTime * agent.angularSpeed);
         }
 
-        // Move towards the player
         agent.SetDestination(player.position);
     }
 }

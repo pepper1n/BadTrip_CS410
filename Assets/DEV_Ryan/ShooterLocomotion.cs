@@ -5,13 +5,15 @@ public class ShooterLocomotion : MonoBehaviour
 {
     private Transform player;
     private NavMeshAgent agent;
-    
-    public float followDistance = 5f;
+    private ShooterAttack shooterAttack;
+    private float followDistance;
 
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        shooterAttack = GetComponent<ShooterAttack>();
+        followDistance = shooterAttack.range * 0.8f;
     }
 
     void Update()

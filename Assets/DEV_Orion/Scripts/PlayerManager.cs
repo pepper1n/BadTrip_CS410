@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 namespace BT
@@ -13,8 +14,11 @@ namespace BT
         InputHandler inputHandler;
         Animator anim;
         public float PunchTime = 0f;
+        public float maxHealth = 100f;
+        public float invulnTime = 0.25f;
+        private float damageTimer;
+        public float currentHealth;
 
-        // Start is called before the first frame update
         void Start()
         {
             if (instance == null)
@@ -27,6 +31,7 @@ namespace BT
                 Destroy(gameObject);
             }
 
+            currentHealth = maxHealth;
             inputHandler = GetComponent<InputHandler>();
             anim = GetComponent<Animator>();
         }
@@ -48,7 +53,23 @@ namespace BT
                     PunchTime += Time.deltaTime;
                 }
             }
-            
+            if (damageTimer >= 0)
+            {
+                damageTimer -= Time.deltaTime;
+            }
+        }
+
+        public void TakeDamage(float damage)
+        {
+            if (damageTimer <= 0)
+            {
+                currentHealth -= damage;
+                damageTimer = invulnTime;
+            }
+            if (currentHealth <= 0)
+            {
+                currentHealth = maxHealth;
+            }
         }
     }
 }

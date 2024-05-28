@@ -35,7 +35,6 @@ namespace BT
 
         private void OnTriggerStay(Collider other)
         {
-            //Debug.Log("Inside Trigger");
             if (inputHandler.punchFlag && attackTimer >= attackDelay)
             {
                 HostileBehavior otherHostile = other.gameObject.GetComponent<HostileBehavior>();

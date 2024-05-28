@@ -7,24 +7,30 @@ namespace BT
 {
     public class HUDScript : MonoBehaviour
     {
-
-        public InputHandler IH;
         public GameObject Reticle;
+        public Slider healthBar;
         public Slider trippyBar;
         public Slider fleshBar;
 
+        private GameObject player;
+        private InputHandler IH;
+        private PlayerManager playerManager;
         private StateFlipping stateScript;
-        // Start is called before the first frame update
+
         void Start()
         {
-            stateScript = GameObject.Find("Player").GetComponent<StateFlipping>();
-            IH = GameObject.Find("Player").GetComponent<InputHandler>();
+            player = GameObject.Find("Player");
+            stateScript = player.GetComponent<StateFlipping>();
+            IH = player.GetComponent<InputHandler>();
+            playerManager = player.GetComponent<PlayerManager>();
             Reticle.SetActive(false);
         }
 
-        // Update is called once per frame
         void Update()
         {
+            healthBar.maxValue = playerManager.maxHealth;
+            healthBar.value = playerManager.currentHealth;
+
             if (IH.targetFlag)
             {
                 Reticle.SetActive(true);

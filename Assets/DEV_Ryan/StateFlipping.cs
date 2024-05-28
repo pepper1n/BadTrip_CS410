@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using UnityEngine;
+using BT;
 
 using Debug = UnityEngine.Debug;
 
@@ -63,14 +64,17 @@ public class StateFlipping : MonoBehaviour
                     }
                 }
             }
+            HostileBehavior hostileBehavior = stateStructure.GetComponent<HostileBehavior>();
             if (activeChild != null && inactiveChild != null)
             {
-                Vector3 oldPosition = activeChild.position;
-                Quaternion oldRotation = activeChild.rotation;
-
+                if (hostileBehavior != null)
+                {
+                    Vector3 oldPosition = activeChild.position;
+                    Quaternion oldRotation = activeChild.rotation;
+                    inactiveChild.position = oldPosition;
+                    inactiveChild.rotation = oldRotation;
+                }
                 activeChild.gameObject.SetActive(false);
-                inactiveChild.position = oldPosition;
-                inactiveChild.rotation = oldRotation;
                 inactiveChild.gameObject.SetActive(true);
             }
         }
