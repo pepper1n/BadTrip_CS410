@@ -32,11 +32,17 @@ namespace BT
 
         Vector2 movementInput;
         Vector2 cameraInput;
+        private AudioSource audioSource;
+        public AudioClip[] walkSounds;
+        public AudioClip[] runSounds;
+        public AudioClip[] jumpSounds;
+        public AudioClip[] attackSounds; 
 
         void Start()
         {
             cameraHandler = CameraHandler.singleton;
             weaponEquip = GetComponent<WeaponEquip>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void FixedUpdate()
@@ -85,6 +91,16 @@ namespace BT
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical));
             mouseX = cameraInput.x;
             mouseY = cameraInput.y;
+
+
+            if (horizontal != 0 || vertical != 0 && !sprintFlag && GetComponent<PlayerLocomotion>().CheckIfGrounded()) 
+            {
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.clip = walkSounds[Random.Range(0, walkSounds.Length)];
+                    audioSource.Play();
+                }
+            }
         }
 
         private void HandleDashInput(float delta)
@@ -94,6 +110,13 @@ namespace BT
             {
                 rollInputTimer += delta;
                 sprintFlag = true;
+
+                
+                if  (!audioSource.isPlaying && GetComponent<PlayerLocomotion>().CheckIfGrounded())
+                {
+                    audioSource.clip = runSounds[Random.Range(0, runSounds.Length)];
+                    audioSource.Play();
+                }
             }
             else
             {
@@ -113,6 +136,12 @@ namespace BT
             if (p_Input)
             {
                 punchFlag = true;
+
+                if  (!audioSource.isPlaying)
+                {
+                    audioSource.clip = attackSounds[Random.Range(0, attackSounds.Length)];
+                    audioSource.Play();
+                }
             }
         }
 
@@ -146,6 +175,8 @@ namespace BT
             if (j_Input)
             {
                 jumpFlag = true;
+                audioSource.clip = jumpSounds[Random.Range(0, jumpSounds.Length)];
+                audioSource.Play();
             }
             else
             {

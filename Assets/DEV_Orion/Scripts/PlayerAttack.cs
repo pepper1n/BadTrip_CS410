@@ -13,12 +13,16 @@ namespace BT
         public float damage = 10f;
         public float attackDelay = 1f;
         public float attackTimer = 1f;
+        private AudioSource audioSource;
+        public AudioClip[] hammerAttackSounds;
+        public AudioClip[] swordAttackSounds;
 
         // Start is called before the first frame update
         void Start()
         {
             inputHandler = player.GetComponent<InputHandler>();
             attackCollider = GetComponent<CapsuleCollider>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         void Update()
@@ -37,6 +41,7 @@ namespace BT
                 //other.GetComponentInParent<HostileBehavior>().Kill();
                 other.gameObject.GetComponent<HostileBehavior>().TakeDamage(damage);
                 attackTimer = 0f;
+
             }
         }
     }
