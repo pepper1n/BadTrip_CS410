@@ -11,6 +11,7 @@ namespace BT
         public CapsuleCollider pickupRange;
         public GameObject SwordMesh;
         public GameObject HammerMesh;
+        public GameObject EVMMMesh;
         public GameObject lootItem;
 
         void Start()
@@ -18,15 +19,21 @@ namespace BT
             pickupRange = GetComponent<CapsuleCollider>();
             inputHandler = GameObject.Find("Player").GetComponent<InputHandler>();
             weaponEquip = GameObject.Find("Player").GetComponent<WeaponEquip>();
-            if (Random.Range(0.0f, 1.0f) > 0.5f)
+            float lootGen = Random.Range(0.0f, 1.0f);
+            if (lootGen > 0.33f && .66f >= lootGen)
             {
                 lootItem = weaponEquip.Sword;
                 SwordMesh.SetActive(true);
             }
-            else
+            else if (lootGen <= .33f)
             {
                 lootItem = weaponEquip.Hammer;
                 HammerMesh.SetActive(true);
+            }
+            else
+            {
+                lootItem = weaponEquip.EVMM;
+                EVMMMesh.SetActive(true);
             }
         }
 
