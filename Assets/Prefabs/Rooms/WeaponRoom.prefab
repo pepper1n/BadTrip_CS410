@@ -5936,6 +5936,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5187989292919560468}
     m_Modifications:
+    - target: {fileID: 2589757111019410043, guid: d31737c5399fabf498ec617dcc72b3b9, type: 3}
+      propertyPath: m_TagString
+      value: trippyStructure
+      objectReference: {fileID: 0}
     - target: {fileID: 2733842194409595599, guid: d31737c5399fabf498ec617dcc72b3b9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -5988,11 +5992,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2844919772178228715, guid: d31737c5399fabf498ec617dcc72b3b9, type: 3}
+      propertyPath: m_TagString
+      value: fleshStructure
+      objectReference: {fileID: 0}
     - target: {fileID: 4951636000687398105, guid: d31737c5399fabf498ec617dcc72b3b9, type: 3}
       propertyPath: m_Name
       value: Loot
       objectReference: {fileID: 0}
     - target: {fileID: 4951636000687398105, guid: d31737c5399fabf498ec617dcc72b3b9, type: 3}
+      propertyPath: m_TagString
+      value: stateStructure
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427544115154820803, guid: d31737c5399fabf498ec617dcc72b3b9, type: 3}
       propertyPath: m_TagString
       value: stateStructure
       objectReference: {fileID: 0}

@@ -12,40 +12,72 @@ public class StateFlipping : MonoBehaviour
     GameObject[] stateStructures;
 
     public bool isTrippy = true;
+    public float trippyDuration = 5;
+    public float fleshDuration = 5;
+    public float timer = 0;
 
     Color trippyColor = new Color(1, 0, 1, 1);
     Color fleshColor = new Color(1, 0, 0, 1);
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        timer += Time.deltaTime;
+        if (isTrippy)
         {
-            isTrippy = !isTrippy;
-            GameObject[] stateStructures = GameObject.FindGameObjectsWithTag("stateStructure");
-            foreach (GameObject stateStructure in stateStructures)
+            if (timer >= trippyDuration)
             {
-                Transform[] children = stateStructure.GetComponentsInChildren<Transform>(true);
-                foreach (Transform child in children)
-                {
-                    if (child.CompareTag("trippyStructure") || child.CompareTag("fleshStructure"))
-                    {
-                        child.gameObject.SetActive(!child.gameObject.activeSelf);
-                    }
-                }
+                timer -= trippyDuration;
+                Swap();
             }
-            Light[] lights = FindObjectsOfType<Light>();
-            foreach (Light light in lights)
+        }
+        else
+        {
+            if (timer >= fleshDuration)
             {
-                light.color = isTrippy ? trippyColor : fleshColor;
+                timer -= fleshDuration;
+                Swap();
             }
         }
     }
 
-    void ToggleActiveState(GameObject[] gameObjects)
+    void Swap()
     {
-        foreach (GameObject obj in gameObjects)
+        isTrippy = !isTrippy;
+        GameObject[] stateStructures = GameObject.FindGameObjectsWithTag("stateStructure");
+        foreach (GameObject stateStructure in stateStructures)
         {
-            obj.SetActive(!obj.activeSelf);
+            Transform[] children = stateStructure.GetComponentsInChildren<Transform>(true);
+            Transform activeChild = null;
+            Transform inactiveChild = null;
+            foreach (Transform child in children)
+            {
+                if (child.CompareTag("trippyStructure") || child.CompareTag("fleshStructure"))
+                {
+                    if (child.gameObject.activeSelf)
+                    {
+                        activeChild = child;
+                    }
+                    else
+                    {
+                        inactiveChild = child;
+                    }
+                }
+            }
+            if (activeChild != null && inactiveChild != null)
+            {
+                Vector3 oldPosition = activeChild.position;
+                Quaternion oldRotation = activeChild.rotation;
+
+                activeChild.gameObject.SetActive(false);
+                inactiveChild.position = oldPosition;
+                inactiveChild.rotation = oldRotation;
+                inactiveChild.gameObject.SetActive(true);
+            }
+        }
+        Light[] lights = FindObjectsOfType<Light>();
+        foreach (Light light in lights)
+        {
+            light.color = isTrippy ? trippyColor : fleshColor;
         }
     }
 }

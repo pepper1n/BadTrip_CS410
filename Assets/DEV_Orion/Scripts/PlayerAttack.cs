@@ -32,11 +32,21 @@ namespace BT
         private void OnTriggerStay(Collider other)
         {
             //Debug.Log("Inside Trigger");
-            if (other.gameObject.tag == "Hostile" && inputHandler.punchFlag && attackTimer >= attackDelay)
+            if (inputHandler.punchFlag && attackTimer >= attackDelay)
             {
-                //other.GetComponentInParent<HostileBehavior>().Kill();
-                other.gameObject.GetComponent<HostileBehavior>().TakeDamage(damage);
-                attackTimer = 0f;
+                HostileBehavior otherHostile = other.gameObject.GetComponent<HostileBehavior>();
+                HostileBehavior parentHostile = other.gameObject.GetComponentInParent<HostileBehavior>();
+
+                if (otherHostile != null)
+                {
+                    otherHostile.TakeDamage(damage);
+                    attackTimer = 0f;
+                }
+                else if (parentHostile != null)
+                {
+                    parentHostile.TakeDamage(damage);
+                    attackTimer = 0f;
+                }
             }
         }
     }
