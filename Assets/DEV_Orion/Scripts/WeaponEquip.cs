@@ -8,6 +8,7 @@ namespace BT
     {
         public GameObject Sword;
         public GameObject Hammer;
+        public GameObject EVMM;
 
         public GameObject Weapon1 = null;
         public GameObject Weapon2 = null;
