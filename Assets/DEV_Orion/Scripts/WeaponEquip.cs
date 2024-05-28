@@ -14,7 +14,14 @@ namespace BT
         public GameObject Weapon3 = null;
         private GameObject activeWeapon;
         private GameObject previousWeapon;
+        public AudioClip drawSwordSound;
+        public AudioClip drawHammerSound;
+        private AudioSource audioSource;
 
+        private void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
         public void PickupWeapon(GameObject newWeapon)
         {
             if (newWeapon != null)
@@ -50,7 +57,7 @@ namespace BT
             }
             else
             {
-                if (activeWeapon)
+            if (activeWeapon)
                 {
                     previousWeapon = activeWeapon;
                 }
@@ -60,6 +67,17 @@ namespace BT
                     previousWeapon.SetActive(false);
                 }
                 activeWeapon.SetActive(true);
+            }
+            
+            if (switchedWeapon == Sword)
+            {
+                audioSource.clip = drawSwordSound;
+                audioSource.Play();
+            }
+            else if (switchedWeapon == Hammer)
+            {
+                audioSource.clip = drawHammerSound;
+                audioSource.Play();
             }
         }
 

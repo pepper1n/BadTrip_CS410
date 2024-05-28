@@ -36,6 +36,7 @@ namespace BT
         float jumpTimer = 0;
         public float jumpCount = 1;
         float jumps = 0;
+
         //public bool falling = false;
 
 
@@ -117,6 +118,7 @@ namespace BT
                 speed = sprintSpeed;
                 isSprinting = true;
                 moveDirection *= speed;
+
             }
             else
             {
