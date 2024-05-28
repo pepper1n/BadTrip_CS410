@@ -1278,6 +1278,7 @@ Transform:
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8360723614473171791}
   - {fileID: 6067257545014109214}
   - {fileID: 5971371098176102597}
   m_Father: {fileID: 0}
@@ -1457,6 +1458,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2578380506995650106}
   PunchTime: 0
+  maxHealth: 100
+  invulnTime: 0.25
+  currentHealth: 0
 --- !u!114 &6198516586454122351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,6 +1475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sword: {fileID: 2589378874164842590}
   Hammer: {fileID: 6121897534006816648}
+  EVMM: {fileID: 0}
   Weapon1: {fileID: 0}
   Weapon2: {fileID: 0}
   Weapon3: {fileID: 0}
@@ -2632,6 +2637,37 @@ Transform:
   m_Children:
   - {fileID: 4873292579922796975}
   m_Father: {fileID: 2179747840210123964}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8330659444090337893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8360723614473171791}
+  m_Layer: 0
+  m_Name: playerTarget
+  m_TagString: playerTarget
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8360723614473171791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8330659444090337893}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.014, y: 1.625, z: 0}
+  m_LocalScale: {x: 1.6666666, y: 1.6666666, z: 1.6666666}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2919440615503836288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8448024796776896977
 GameObject:

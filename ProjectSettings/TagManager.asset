@@ -8,6 +8,7 @@ TagManager:
   - stateStructure
   - trippyStructure
   - fleshStructure
+  - playerTarget
   layers:
   - Default
   - TransparentFX

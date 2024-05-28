@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShooterAttack : MonoBehaviour
 {
     private Transform player;
+    private Transform playerTarget;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
     public float bulletSpeed = 10f;
@@ -16,6 +17,7 @@ public class ShooterAttack : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
+        playerTarget = GameObject.FindWithTag("playerTarget").transform;
         attackTimer = 0;
     }
 
@@ -35,11 +37,13 @@ public class ShooterAttack : MonoBehaviour
 
     void Shoot()
     {
-        Debug.Log("shoot!");
         attackTimer = attackDelay;
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         bullet.SetActive(true);
-        Vector3 shootingDirection = (player.transform.position - transform.position).normalized;
+        Vector3 shootingDirection = (playerTarget.position - transform.position).normalized;
         bullet.GetComponent<Rigidbody>().velocity = shootingDirection * bulletSpeed;
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.SetDamage(damage);
+        bulletScript.SetShooter(gameObject);
     }
 }
