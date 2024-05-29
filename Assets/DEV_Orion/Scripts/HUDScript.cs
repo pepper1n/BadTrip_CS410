@@ -33,10 +33,10 @@ namespace BT
 
         void Update()
         {
-            if(shop.isShopping == true)
-            {
-                canvasGroup.alpha = 0;
-            }
+            //if(shop.isShopping == true)
+            //{
+            //    canvasGroup.alpha = 0;
+            //}
 
             if(shop.isShopping == false)
             {

@@ -85,7 +85,9 @@ namespace BT
             }
             if (currentHealth <= 0)
             {
-                currentHealth = maxHealth + shopHealth;
+                anim.applyRootMotion = true;
+                anim.SetBool("isInteracting", true);
+                anim.CrossFade("Death", .1f);
             }
 
             if(sb == true)
