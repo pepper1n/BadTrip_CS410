@@ -195,7 +195,7 @@ public class Shop : MonoBehaviour
         if(pl.gold >= healthCost)
         {
             audioSources[2].Play();
-            pm.shopHealth++;
+            pm.currentHealth += 10;
             pl.gold -= healthCost;
             wealth.text = pl.gold.ToString();
         }
@@ -218,7 +218,7 @@ public class Shop : MonoBehaviour
         if (pl.gold >= damageCost)
         {
             audioSources[2].Play();
-            pl.shopDamage++;
+            pl.shopDamage += 5;
             pl.gold -= damageCost;
             wealth.text = pl.gold.ToString();
         }
