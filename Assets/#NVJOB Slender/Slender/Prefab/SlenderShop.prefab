@@ -1235,9 +1235,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 988810033603b334cb72d2e6dcd03bb5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ccd8a2ebe600fcf4bbaae177e63448df, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1281,7 +1281,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1331,7 +1331,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c556a6cee5c354340849d19259276ed0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 70dbbe5d8671ebf4b9d6a812bf868188, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1427,7 +1427,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9cd6c59c89e245a4092db6da2083f6f1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ae998e4c74ecf4f4abaa6bd498c5da76, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1523,9 +1523,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a07fd064bbbb2074bbbc89695f438584, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 288ed2071337a61459a80bf21b8f7592, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.807
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1621,7 +1621,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b0753c61b05ec3a4faad122befbefe32, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.916
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1715,9 +1715,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cda92215ced0ad74aa337fa89819494d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3dc9c44b07f1c4048a97cdd4f4d13cc1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.657
   m_Pitch: 1
   Loop: 0
   Mute: 0

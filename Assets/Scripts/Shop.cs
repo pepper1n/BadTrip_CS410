@@ -9,8 +9,9 @@ public class Shop : MonoBehaviour
     public float range = 3.0f;
     private GameObject player;
     private AudioSource[] audioSources;
+    private GameObject music;
     private bool triggered = false;
-    private bool isShopping = false;
+    public bool isShopping = false;
     private float timer = 0;
     private float deathTimer = 0;
     private bool deathSound = false;
@@ -40,8 +41,9 @@ public class Shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        music = GameObject.Find("MusicSource");
         fade = FindObjectOfType<FadeToBlack>();
-        wealth = GameObject.Find("Wealth/Amount").GetComponent<TextMeshProUGUI>();
+        wealth = GameObject.Find("ShopUI/Wealth/Amount").GetComponent<TextMeshProUGUI>();
         shop = GameObject.Find("Shop");
         setPrices();
         shop.SetActive(false);
@@ -94,6 +96,7 @@ public class Shop : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                isShopping = false;
                 shop.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -120,12 +123,14 @@ public class Shop : MonoBehaviour
 
         if (dying)
         {
+            
             triggered = true;
             deathTimer += Time.deltaTime;
         }
 
         if (deathTimer >= 1 && !pushed)
         {
+            music.SetActive(false);
             Vector3 backwardDirection = -player.transform.forward;
             player.GetComponent<Rigidbody>().AddForce(backwardDirection * 100, ForceMode.Impulse);
             audioSources[5].Play();

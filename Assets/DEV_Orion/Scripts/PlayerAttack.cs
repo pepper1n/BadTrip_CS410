@@ -46,12 +46,12 @@ namespace BT
 
                 if (otherHostile != null)
                 {
-                    otherHostile.TakeDamage(damage + pl.shopDamage);
+                    otherHostile.TakeDamage(damage);
                     attackTimer = 0f;
                 }
                 else if (parentHostile != null)
                 {
-                    parentHostile.TakeDamage(damage + pl.shopDamage);
+                    parentHostile.TakeDamage(damage);
                     attackTimer = 0f;
                 }
             }
