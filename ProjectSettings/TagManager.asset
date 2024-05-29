@@ -9,6 +9,8 @@ TagManager:
   - trippyStructure
   - fleshStructure
   - playerTarget
+  - enemyRoom
+  - safeRoom
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,8 @@ namespace BT
         public float maxHealth = 30;
         private float currentHealth = 30;
         private Slider[] healthBars;
+        public GameObject[] enemyRooms;
+
 
         public void Start()
         {
@@ -19,6 +21,8 @@ namespace BT
             {
                 healthBar.maxValue = maxHealth;
             }
+
+            enemyRooms = GameObject.FindGameObjectsWithTag("enemyRoom");
         }
 
         public void Update()
@@ -40,7 +44,14 @@ namespace BT
 
         public void Kill()
         {
+            Debug.Log("Killed " + gameObject.name);
             Destroy(this.gameObject);
+            
+            foreach (GameObject room in enemyRooms)
+            {
+                room.GetComponent<ActiveRoom>().enemyKill(gameObject);
+            }
+            
         }
 
         public void TakeDamage(float damage)

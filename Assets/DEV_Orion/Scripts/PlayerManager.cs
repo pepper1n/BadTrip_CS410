@@ -19,6 +19,7 @@ namespace BT
         public float invulnTime = 0.25f;
         private float damageTimer;
         public float currentHealth;
+        public float shopHealth = 0f;
 
         private bool DOT = false;
         private float DOTduration = 0;
@@ -76,7 +77,7 @@ namespace BT
             }
             if (currentHealth <= 0)
             {
-                currentHealth = maxHealth;
+                currentHealth = maxHealth + shopHealth;
             }
         }
 

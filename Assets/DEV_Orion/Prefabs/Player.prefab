@@ -99,6 +99,37 @@ Transform:
   - {fileID: 762051746724036607}
   m_Father: {fileID: 5032335794106091503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7630800462070952582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5601190061341751999}
+  m_Layer: 0
+  m_Name: playerTarget
+  m_TagString: playerTarget
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5601190061341751999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7630800462070952582}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.009, y: 2.083, z: 0.197}
+  m_LocalScale: {x: 1.6666666, y: 1.6666666, z: 1.6666666}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7036089209019360359}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &367428700679472292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305,6 +336,7 @@ MonoBehaviour:
   attackTimer: 1
   hammerAttackSounds: []
   swordAttackSounds: []
+  pl: {fileID: 0}
 --- !u!1001 &1700406671500812411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -440,6 +472,7 @@ MonoBehaviour:
   attackTimer: 1
   hammerAttackSounds: []
   swordAttackSounds: []
+  pl: {fileID: 0}
 --- !u!4 &746217323599306406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2144301008763993821, guid: f87c2e55b95e4894c9c30592cce6d287, type: 3}
@@ -570,6 +603,7 @@ MonoBehaviour:
   attackTimer: 1
   hammerAttackSounds: []
   swordAttackSounds: []
+  pl: {fileID: 0}
 --- !u!136 &374982056607338463
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -898,6 +932,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 95d1d8711a958b04f91afefef5699416, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 5601190061341751999}
     - targetCorrespondingSourceObject: {fileID: 2592382440351646819, guid: 95d1d8711a958b04f91afefef5699416, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8249953302610122854}
@@ -950,6 +987,11 @@ Transform:
 --- !u!4 &5032335794106091503 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2592382440351646819, guid: 95d1d8711a958b04f91afefef5699416, type: 3}
+  m_PrefabInstance: {fileID: 7363258561057751948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7036089209019360359 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 95d1d8711a958b04f91afefef5699416, type: 3}
   m_PrefabInstance: {fileID: 7363258561057751948}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7705348315184807645 stripped
@@ -1090,12 +1132,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a82e99444934544ea6e08e0a82a349f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopSpeed: 0
+  shopDamage: 0
+  shopJump: 0
+  shopHealth: 0
   myTransform: {fileID: 0}
   RootTransform: {fileID: 3245210653929931089}
   animatorHandler: {fileID: 0}
   rigidbody: {fileID: 0}
   normalCamera: {fileID: 0}
   isSprinting: 0
+  gold: 999
   movementSpeed: 5
   sprintSpeed: 7
   rotationSpeed: 10
@@ -1132,6 +1179,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7705348315184807645}
   PunchTime: 0
+  maxHealth: 100
+  invulnTime: 0.25
+  currentHealth: 0
+  shopHealth: 0
 --- !u!114 &10000981285763218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,3 +1547,4 @@ MonoBehaviour:
   attackTimer: 1
   hammerAttackSounds: []
   swordAttackSounds: []
+  pl: {fileID: 0}

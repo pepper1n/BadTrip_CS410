@@ -7,18 +7,36 @@ public class EnemySpawnerScript : MonoBehaviour
     public GameObject[] enemies;
 
     public Transform enemySpawnPoint;
-    // Start is called before the first frame update
+    public bool boss;
+    public Vector3 bossScale = new Vector3(5, 5, 5);
+    private bool isTrippy;
     void Start()
     {
         GameObject enemyPrefab = enemies[Random.Range(0, enemies.Length)];
 
         GameObject enemy = Instantiate(enemyPrefab, transform.position+new Vector3(Random.Range(1,5),0,Random.Range(1,5)), Quaternion.identity);
-        enemy.SetActive(true);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (boss) 
+        {
+            enemy.transform.localScale = bossScale;
+        }
+
+        enemy.SetActive(true);
+                    
+        isTrippy = GameObject.Find("Player").GetComponent<StateFlipping>().isTrippy;
+        if (isTrippy)
+        {
+            // trippy on
+            enemy.transform.GetChild(0).gameObject.SetActive(true);
+            // dark off
+            enemy.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else if (!isTrippy)
+        {
+            // dark on
+            enemy.transform.GetChild(1).gameObject.SetActive(true);
+            // trippy off
+            enemy.transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 }
