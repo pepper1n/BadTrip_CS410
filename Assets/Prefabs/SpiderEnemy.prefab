@@ -801,6 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 30
+  enemyRooms: []
 --- !u!1 &8576494613152762087
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,7 +843,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1705849404070370923, guid: 3af956640595c6e4cb9436f0f4545ffd, type: 3}
       propertyPath: m_Name
-      value: JumpingSpider
+      value: EnemyJumpingSpider
       objectReference: {fileID: 0}
     - target: {fileID: 1705849404070370923, guid: 3af956640595c6e4cb9436f0f4545ffd, type: 3}
       propertyPath: m_IsActive
@@ -940,7 +941,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2082831617555776721, guid: 3af956640595c6e4cb9436f0f4545ffd, type: 3}
-      insertIndex: 0
+      insertIndex: -1
       addedObject: {fileID: 2194544418003693357}
     - targetCorrespondingSourceObject: {fileID: 2082831617555776721, guid: 3af956640595c6e4cb9436f0f4545ffd, type: 3}
       insertIndex: -1
@@ -1094,7 +1095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8688803186435683820, guid: fd02805ee801de64a828e8190cac7784, type: 3}
       propertyPath: m_Name
-      value: BlackWidow
+      value: EnemyBlackWidow
       objectReference: {fileID: 0}
     - target: {fileID: 8688803186435683820, guid: fd02805ee801de64a828e8190cac7784, type: 3}
       propertyPath: m_IsActive

@@ -253,6 +253,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7528787425600462592, guid: dff67c0671714114aab3f3dc48d6169d, type: 3}
+      propertyPath: fleshDuration
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528787425600462592, guid: dff67c0671714114aab3f3dc48d6169d, type: 3}
+      propertyPath: trippyDuration
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -382,6 +390,10 @@ MonoBehaviour:
   size: {x: 5, y: 5}
   startPos: 0
   rooms:
+  - room: {fileID: 7633575498576695660, guid: 19cb77b503480154db1a51a98ec99ec9, type: 3}
+    minPosition: {x: 1, y: 1}
+    maxPosition: {x: 5, y: 5}
+    obligatory: 1
   - room: {fileID: 7633575498576695660, guid: 5894d1fb215821c4b968f7eac45e4475, type: 3}
     minPosition: {x: 1, y: 1}
     maxPosition: {x: 4, y: 4}
@@ -390,10 +402,6 @@ MonoBehaviour:
     minPosition: {x: 1, y: 1}
     maxPosition: {x: 5, y: 5}
     obligatory: 1
-  - room: {fileID: 7633575498576695660, guid: 19cb77b503480154db1a51a98ec99ec9, type: 3}
-    minPosition: {x: 1, y: 1}
-    maxPosition: {x: 5, y: 5}
-    obligatory: 0
   - room: {fileID: 7633575498576695660, guid: 99b49a8ff3955aa43abb0f6feb8a63a5, type: 3}
     minPosition: {x: 0, y: 0}
     maxPosition: {x: 0, y: 0}
@@ -407,9 +415,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1368148463558929719, guid: 9fcead4d8cde0cb4a845ff6f0f497a66, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368148463558929719, guid: 9fcead4d8cde0cb4a845ff6f0f497a66, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1537569196718883565, guid: 9fcead4d8cde0cb4a845ff6f0f497a66, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177225897024139472, guid: 9fcead4d8cde0cb4a845ff6f0f497a66, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177225897024139472, guid: 9fcead4d8cde0cb4a845ff6f0f497a66, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7736047924314771811, guid: 9fcead4d8cde0cb4a845ff6f0f497a66, type: 3}
       propertyPath: m_Pivot.x

@@ -32,6 +32,7 @@ namespace BT
 
         Vector2 movementInput;
         Vector2 cameraInput;
+        
         private AudioSource audioSource;
         public AudioClip[] walkSounds;
         public AudioClip[] runSounds;
