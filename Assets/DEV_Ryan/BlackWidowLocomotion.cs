@@ -1,17 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ChaserLocomotion : MonoBehaviour
+public class BlackWidowLocomotion : MonoBehaviour
 {
     private Transform player;
     private NavMeshAgent agent;
-    private ChaserAttack chaserAttack;
+    private BlackWidowAttack attack;
 
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        chaserAttack = GetComponent<ChaserAttack>();
+        attack = GetComponent<BlackWidowAttack>();
     }
 
     void Update()
@@ -25,7 +27,7 @@ public class ChaserLocomotion : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rotationToPlayer, Time.deltaTime * agent.angularSpeed);
         }
 
-        if (directionToPlayer.magnitude < (chaserAttack.range * 0.9f))
+        if (directionToPlayer.magnitude < attack.range)
         {
             agent.SetDestination(transform.position);
         }
@@ -35,3 +37,4 @@ public class ChaserLocomotion : MonoBehaviour
         }
     }
 }
+

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using BT;
 
-public class ChaserAttack : MonoBehaviour
+public class BlackWidowAttack : MonoBehaviour
 {
     private Transform player;
     private PlayerManager playerManager;
     public float range;
-    public float     damage;
+    public float poisonDamage;
     public float attackDelay;
-    public float attackTimer;
+    public float posionDuration;
+    private float attackTimer;
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class ChaserAttack : MonoBehaviour
         Vector3 directionToPlayer = player.position - transform.position;
         if (directionToPlayer.magnitude <= range && attackTimer <= 0)
         {
-            playerManager.TakeDamage(damage);
+            playerManager.InflictPoison(poisonDamage, posionDuration);
             attackTimer = attackDelay;
         }
     }

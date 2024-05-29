@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, 5f);
+        Physics.IgnoreCollision(GetComponent<Collider>(), shooter.GetComponent<Collider>());
     }
 
     private void OnTriggerEnter(Collider other)

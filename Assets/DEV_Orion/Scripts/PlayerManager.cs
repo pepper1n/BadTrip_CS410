@@ -13,11 +13,18 @@ namespace BT
 
         InputHandler inputHandler;
         Animator anim;
+
         public float PunchTime = 0f;
         public float maxHealth = 100f;
         public float invulnTime = 0.25f;
         private float damageTimer;
         public float currentHealth;
+
+        private bool DOT = false;
+        private float DOTduration = 0;
+        private float DOTamount = 0;
+        private float DOTremaining = 0;
+        private float timer = 0;
 
         void Start()
         {
@@ -57,6 +64,20 @@ namespace BT
             {
                 damageTimer -= Time.deltaTime;
             }
+            if (DOT)
+            {
+                timer += Time.deltaTime;
+                currentHealth -= DOTamount*(Time.deltaTime/DOTduration);
+                DOTremaining -= DOTamount*(Time.deltaTime/DOTduration);
+                if (timer >= DOTduration)
+                {
+                    DOT = false;
+                }
+            }
+            if (currentHealth <= 0)
+            {
+                currentHealth = maxHealth;
+            }
         }
 
         public void TakeDamage(float damage)
@@ -66,9 +87,22 @@ namespace BT
                 currentHealth -= damage;
                 damageTimer = invulnTime;
             }
-            if (currentHealth <= 0)
+        }
+
+        public void InflictPoison(float damage, float duration)
+        {
+            if (DOT)
             {
-                currentHealth = maxHealth;
+                return;
+            }
+            else
+            {
+                UnityEngine.Debug.Log("poisoned!");
+                DOT = true;
+                DOTduration = duration;
+                DOTamount = damage;
+                DOTremaining = damage;
+                timer = 0;
             }
         }
     }

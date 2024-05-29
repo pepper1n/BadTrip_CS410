@@ -8,17 +8,17 @@ public class ShooterAttack : MonoBehaviour
     private Transform playerTarget;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
-    public float bulletSpeed = 10f;
-    public float range = 5f;
-    public float damage = 20f;
-    public float attackDelay = 1f;
+    public float bulletSpeed;
+    public float range;
+    public float damage;
+    public float attackDelay;
     private float attackTimer;
 
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
         playerTarget = GameObject.FindWithTag("playerTarget").transform;
-        attackTimer = 0;
+        attackTimer = attackDelay;
     }
 
     void Update()
@@ -40,7 +40,8 @@ public class ShooterAttack : MonoBehaviour
         attackTimer = attackDelay;
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         bullet.SetActive(true);
-        Vector3 shootingDirection = (playerTarget.position - transform.position).normalized;
+        Vector3 shootingDirection = (playerTarget.position - bulletSpawnPoint.position).normalized;
+        bullet.transform.rotation = Quaternion.LookRotation(shootingDirection);
         bullet.GetComponent<Rigidbody>().velocity = shootingDirection * bulletSpeed;
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.SetDamage(damage);

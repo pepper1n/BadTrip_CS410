@@ -622,8 +622,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 278015033500703904}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.99130434, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1015,9 +1015,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85664ec57cdf48e40a35d0fd1ec08586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1.5
+  range: 1.35
   damage: 20
   attackDelay: 1
+  attackTimer: 0
 --- !u!1 &9179128431146459311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1167,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1206,5 +1207,5 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 2611390694888478571}
   bulletSpeed: 20
   range: 10
-  damage: 20
+  damage: 10
   attackDelay: 1
