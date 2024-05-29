@@ -49,13 +49,13 @@ public class ActiveRoom : MonoBehaviour
         // add enemies to list 
         if (other.gameObject.name.Contains("Enemy"))
         {
+            Debug.Log(other.gameObject.name);
             enemy = other.gameObject.transform.parent.gameObject;
 
             if (!enemies.Contains(enemy))
             {
-                Debug.Log("Enemy added: " + other.gameObject.name);
                 enemies.Add(enemy);
-                Debug.Log("Enemy added to list. Total: " + enemies.Count);
+                Debug.Log(other.gameObject.name + "added to list. Total: " + enemies.Count);
             }
         }
 

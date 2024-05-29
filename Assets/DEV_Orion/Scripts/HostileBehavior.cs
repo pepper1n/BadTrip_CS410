@@ -56,7 +56,7 @@ namespace BT
 
         public void TakeDamage(float damage)
         {
-            Debug.Log("Damaged " + gameObject.name);
+            Debug.Log("Damaged");
             currentHealth -= damage;
             if (currentHealth <= 0)
             {

@@ -176,8 +176,11 @@ namespace BT
             if (j_Input)
             {
                 jumpFlag = true;
-                audioSource.clip = jumpSounds[Random.Range(0, jumpSounds.Length)];
-                audioSource.Play();
+                if  (!audioSource.isPlaying)
+                {
+                    audioSource.clip = jumpSounds[Random.Range(0, jumpSounds.Length)];
+                    audioSource.Play();
+                }
             }
             else
             {
