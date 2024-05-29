@@ -7,7 +7,7 @@ namespace BT
     public class PlayerLocomotion : MonoBehaviour
     {
         public float shopSpeed = 0;
-        public float shopDamage;
+        public float shopDamage = 0;
         public float shopJump = 0;
         public float shopHealth = 0;
         Transform cameraObject;
