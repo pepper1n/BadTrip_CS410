@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class endLevelTeleport : MonoBehaviour
 {
-    private string sceneName;
+    private const string DEV_Orion = "DEV_Orion";
+    public string sceneName = DEV_Orion;
     void Start()
     {
-        sceneName = SceneManager.GetActiveScene().name;
+        //sceneName = SceneManager.GetActiveScene().name;
     }
 
     // Update is called once per frame
@@ -17,7 +18,7 @@ public class endLevelTeleport : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SceneManager.LoadScene(sceneName);
+            Destroy(gameObject);
         }
-        
     }
 }

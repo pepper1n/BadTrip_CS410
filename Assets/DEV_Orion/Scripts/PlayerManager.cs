@@ -9,6 +9,9 @@ namespace BT
     {
 
         public static PlayerManager instance;
+
+        public PlayerLocomotion pl;
+
         public GameObject player;
 
         InputHandler inputHandler;
@@ -26,9 +29,14 @@ namespace BT
         private float DOTamount = 0;
         private float DOTremaining = 0;
         private float timer = 0;
+        private float speedTimer = 0;
+
+        bool sb = false;
 
         void Start()
         {
+            player = GameObject.FindWithTag("Player");
+            pl = player.GetComponent<PlayerLocomotion>();
             if (instance == null)
             {
                 instance = this;
@@ -39,7 +47,7 @@ namespace BT
                 Destroy(gameObject);
             }
 
-            currentHealth = maxHealth;
+            currentHealth = maxHealth-10;
             inputHandler = GetComponent<InputHandler>();
             anim = GetComponent<Animator>();
         }
@@ -79,6 +87,22 @@ namespace BT
             {
                 currentHealth = maxHealth + shopHealth;
             }
+
+            if(sb == true)
+            {
+                speedTimer += Time.deltaTime;
+                if(speedTimer == 15)
+                {
+                    pl.shopSpeed -= 10;
+                    sb = false;
+                }
+            }
+
+            
+
+
+
+
         }
 
         public void TakeDamage(float damage)
@@ -105,6 +129,12 @@ namespace BT
                 DOTremaining = damage;
                 timer = 0;
             }
+        }
+
+        public void speedBoost()
+        {
+            pl.shopSpeed +=10;
+            sb = true;
         }
     }
 }
