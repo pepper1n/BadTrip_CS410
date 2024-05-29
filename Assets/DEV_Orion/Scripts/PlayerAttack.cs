@@ -17,9 +17,13 @@ namespace BT
         public AudioClip[] hammerAttackSounds;
         public AudioClip[] swordAttackSounds;
 
+        public PlayerLocomotion pl;
+        private Shop shopScript;
+
         // Start is called before the first frame update
         void Start()
         {
+            shopScript = FindObjectOfType<Shop>();
             inputHandler = player.GetComponent<InputHandler>();
             attackCollider = GetComponent<CapsuleCollider>();
             audioSource = GetComponent<AudioSource>();
@@ -42,14 +46,19 @@ namespace BT
 
                 if (otherHostile != null)
                 {
-                    otherHostile.TakeDamage(damage);
+                    otherHostile.TakeDamage(damage + pl.shopDamage);
                     attackTimer = 0f;
                 }
                 else if (parentHostile != null)
                 {
-                    parentHostile.TakeDamage(damage);
+                    parentHostile.TakeDamage(damage + pl.shopDamage);
                     attackTimer = 0f;
                 }
+            }
+
+            if (inputHandler.punchFlag && attackTimer >= attackDelay && other.gameObject.tag == "merchant")
+            {
+                shopScript.dead();
             }
         }
     }

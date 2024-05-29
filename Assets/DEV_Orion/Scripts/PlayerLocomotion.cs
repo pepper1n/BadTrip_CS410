@@ -6,7 +6,10 @@ namespace BT
 {
     public class PlayerLocomotion : MonoBehaviour
     {
-
+        public float shopSpeed;
+        public float shopDamage;
+        public float shopJump;
+        public float shopHealth;
         Transform cameraObject;
         InputHandler inputHandler;
         Vector3 moveDirection;
@@ -24,6 +27,8 @@ namespace BT
         public bool isSprinting;
 
         [Header("Stats")]
+        [SerializeField]
+        public float gold = 999;
         [SerializeField]
         float movementSpeed = 5;
         [SerializeField]
@@ -112,10 +117,10 @@ namespace BT
             moveDirection += cameraObject.right * inputHandler.horizontal;
             moveDirection.Normalize();
 
-            float speed = movementSpeed;
+            float speed = movementSpeed + shopSpeed;
             if (inputHandler.sprintFlag)
             {
-                speed = sprintSpeed;
+                speed = sprintSpeed + shopSpeed;
                 isSprinting = true;
                 moveDirection *= speed;
 
@@ -214,7 +219,7 @@ namespace BT
                 jumps += 1;
                 jumpTimer = 0;
                 animatorHandler.PlayTargetAnimation("Jump", false);
-                rigidbody.AddForce(new Vector3(0, 1, 0) * jumpForce * delta, ForceMode.Impulse);
+                rigidbody.AddForce(new Vector3(0, 1, 0) * (jumpForce + shopJump * 10) * delta, ForceMode.Impulse);
             }
             else
             {
