@@ -7,6 +7,7 @@ namespace BT
 {
     public class HostileBehavior : MonoBehaviour
     {
+        private PlayerLocomotion pl;
         public float maxHealth = 30;
         private float currentHealth = 30;
         private Slider[] healthBars;
@@ -15,6 +16,7 @@ namespace BT
 
         public void Start()
         {
+            pl = FindObjectOfType<PlayerLocomotion>();
             currentHealth = maxHealth;
             healthBars = GetComponentsInChildren<Slider>(true);
             foreach (Slider healthBar in healthBars)
@@ -57,7 +59,7 @@ namespace BT
         public void TakeDamage(float damage)
         {
             Debug.Log("Damaged");
-            currentHealth -= damage;
+            currentHealth -= (damage + pl.shopDamage);
             if (currentHealth <= 0)
             {
                 Invoke("Kill", .25f);

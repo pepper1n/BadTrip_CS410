@@ -20,6 +20,10 @@ public class StateFlipping : MonoBehaviour
     Color trippyColor = new Color(1, 0, 1, 1);
     Color fleshColor = new Color(1, 0, 0, 1);
 
+    private GameObject fleshAudio;
+    private AudioSource[] trippyAudioSources;
+
+
     void Update()
     {
         timer += Time.deltaTime;
@@ -47,37 +51,65 @@ public class StateFlipping : MonoBehaviour
         GameObject[] stateStructures = GameObject.FindGameObjectsWithTag("stateStructure");
         foreach (GameObject stateStructure in stateStructures)
         {
-            Transform[] children = stateStructure.GetComponentsInChildren<Transform>(true);
-            Transform activeChild = null;
-            Transform inactiveChild = null;
-            foreach (Transform child in children)
+            if (stateStructure.name == "MusicSource")
             {
-                if (child.CompareTag("trippyStructure") || child.CompareTag("fleshStructure"))
+                fleshAudio = stateStructure.transform.GetChild(0).gameObject;
+                trippyAudioSources = stateStructure.transform.GetChild(1).gameObject.GetComponentsInChildren<AudioSource>();
+
+                if (isTrippy)
                 {
-                    if (child.gameObject.activeSelf)
+                    foreach (AudioSource trippyAudio in trippyAudioSources)
                     {
-                        activeChild = child;
+                        trippyAudio.volume = 0.5f;
                     }
-                    else
+                    fleshAudio.SetActive(false);
+
+                }
+                else if (!isTrippy)
+                {
+                    foreach (AudioSource trippyAudio in trippyAudioSources)
                     {
-                        inactiveChild = child;
+                        trippyAudio.volume = 0f;
                     }
+                    fleshAudio.SetActive(true);
                 }
             }
-            HostileBehavior hostileBehavior = stateStructure.GetComponent<HostileBehavior>();
-            if (activeChild != null && inactiveChild != null)
+            else 
             {
-                if (hostileBehavior != null)
+                Transform[] children = stateStructure.GetComponentsInChildren<Transform>(true);
+                Transform activeChild = null;
+                Transform inactiveChild = null;
+                foreach (Transform child in children)
                 {
-                    Vector3 oldPosition = activeChild.position;
-                    Quaternion oldRotation = activeChild.rotation;
-                    inactiveChild.position = oldPosition;
-                    inactiveChild.rotation = oldRotation;
+                    if (child.CompareTag("trippyStructure") || child.CompareTag("fleshStructure"))
+                    {
+                        if (child.gameObject.activeSelf)
+                        {
+                            activeChild = child;
+                        }
+                        else
+                        {
+                            inactiveChild = child;
+                        }
+                    }
                 }
-                activeChild.gameObject.SetActive(false);
-                inactiveChild.gameObject.SetActive(true);
+                HostileBehavior hostileBehavior = stateStructure.GetComponent<HostileBehavior>();
+                if (activeChild != null && inactiveChild != null)
+                {
+                    if (hostileBehavior != null)
+                    {
+                        Vector3 oldPosition = activeChild.position;
+                        Quaternion oldRotation = activeChild.rotation;
+                        inactiveChild.position = oldPosition;
+                        inactiveChild.rotation = oldRotation;
+                    }
+                    activeChild.gameObject.SetActive(false);
+                    inactiveChild.gameObject.SetActive(true);
+                }
             }
+    
         }
+
         Light[] lights = FindObjectsOfType<Light>();
         foreach (Light light in lights)
         {
