@@ -47,13 +47,16 @@ namespace BT
 
         void Start()
         {
+            if (cameraObject == null)
+            {
+                cameraObject = CameraHandler.singleton.transform;
+            }
             rigidbody = GetComponent<Rigidbody>();
             inputHandler = GetComponent<InputHandler>();
             animatorHandler = GetComponent<AnimatorHandler>();
             cameraObject = Camera.main.transform;
             myTransform = transform;
             animatorHandler.Initialize();
-
         }
 
         #region Movement
@@ -94,16 +97,15 @@ namespace BT
         public void Update()
         {
             float delta = Time.deltaTime;
-
             isSprinting = inputHandler.b_Input;
             inputHandler.TickInput(delta);
-            HandleJump(delta);
-            HandleMovement(delta);
-            HandleRollingAndSprinting(delta);
-            HandleAttack(delta);
-            
- 
-
+            if (gameObject != null)
+            {
+                HandleJump(delta);
+                HandleMovement(delta);
+                HandleRollingAndSprinting(delta);
+                HandleAttack(delta);
+            }
         }
 
         public void HandleMovement(float delta)
@@ -112,10 +114,12 @@ namespace BT
             {
                 return;
             }
-
-            moveDirection = cameraObject.forward * inputHandler.vertical;
-            moveDirection += cameraObject.right * inputHandler.horizontal;
-            moveDirection.Normalize();
+            if (transform != null)
+            {
+                moveDirection = cameraObject.forward * inputHandler.vertical;
+                moveDirection += cameraObject.right * inputHandler.horizontal;
+                moveDirection.Normalize();
+            }
 
             float speed = movementSpeed + shopSpeed;
             if (inputHandler.sprintFlag)

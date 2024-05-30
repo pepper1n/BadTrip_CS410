@@ -7,6 +7,8 @@ public class CameraHandler : MonoBehaviour
     public Transform targetTransform;
     public Transform cameraTransform;
     public Transform cameraPivotTransform;
+    public Vector3 startingPosition;
+    public Quaternion startingRotation;
     private Transform myTransform;
     private Vector3 cameraTransformPosition;
     private LayerMask ignoreLayers;
@@ -34,12 +36,29 @@ public class CameraHandler : MonoBehaviour
     
     void Awake()
     {
+        /*if (singleton == null)
+        {
+            singleton = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        */
         singleton = this;
+
         myTransform = transform;
         defaultPosition = cameraTransform.localPosition.z;
         ignoreLayers = ~(1 << 8 | 1 << 9 | 1 << 10);
         Cursor.lockState = CursorLockMode.Locked;
         currentLookSpeed = lookSpeed;
+    }
+
+    void Start()
+    {
+        startingPosition = transform.position;
+        startingRotation = transform.rotation;
     }
 
     public void FollowTarget(float delta)
@@ -88,5 +107,11 @@ public class CameraHandler : MonoBehaviour
 
         cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / .2f);
         cameraTransform.localPosition = cameraTransformPosition;
+    }
+
+    public void ResetCamera()
+    {
+        transform.position = startingPosition;
+        transform.rotation = startingRotation;
     }
 }

@@ -1,24 +1,55 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class endLevelTeleport : MonoBehaviour
+using BT;
+public class EndLevelTeleport : MonoBehaviour
 {
-    private const string DEV_Orion = "DEV_Orion";
-    public string sceneName = DEV_Orion;
-    void Start()
-    {
-        //sceneName = SceneManager.GetActiveScene().name;
-    }
-
-    // Update is called once per frame
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(sceneName);
-            Destroy(gameObject);
+            StartCoroutine(WaitTillRestart());
         }
     }
+
+    IEnumerator WaitTillRestart()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
+/*public class EndLevelTeleport : MonoBehaviour
+{
+    private bool isReloading = false;
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !isReloading)
+        {
+            isReloading = true;
+            StartCoroutine(WaitTillRestart());
+        }
+    }
+
+    IEnumerator WaitTillRestart()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.buildIndex);
+
+        yield return null;
+
+        if (PlayerManager.instance != null)
+        {
+            PlayerManager.instance.transform.position = PlayerManager.instance.startingPosition;
+        }
+
+        if (CameraHandler.singleton != null)
+        {
+            CameraHandler.singleton.ResetCamera();
+        }
+
+        isReloading = false;
+    }
+}*/

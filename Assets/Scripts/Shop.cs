@@ -53,12 +53,6 @@ public class Shop : MonoBehaviour
         audioSources = GetComponents<AudioSource>();
         pl = player.GetComponent<PlayerLocomotion>();
         pm = player.GetComponent<PlayerManager>();
-        
-
-
-
-
-
     }
 
 
