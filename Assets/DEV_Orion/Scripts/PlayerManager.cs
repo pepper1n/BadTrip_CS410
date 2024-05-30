@@ -36,7 +36,7 @@ namespace BT
         {
             player = GameObject.FindWithTag("Player");
             pl = player.GetComponent<PlayerLocomotion>();
-            /*if (instance == null)
+            if (instance == null)
             {
                 instance = this;
                 DontDestroyOnLoad(gameObject);
@@ -44,9 +44,7 @@ namespace BT
             else
             {
                 Destroy(gameObject);
-            }*/
-            instance = this;
-
+            }
             currentHealth = maxHealth;
             startingPosition = transform.position;
             inputHandler = GetComponent<InputHandler>();

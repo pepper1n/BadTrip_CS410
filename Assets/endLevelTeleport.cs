@@ -4,52 +4,39 @@ using UnityEngine.SceneManagement;
 using BT;
 public class EndLevelTeleport : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            StartCoroutine(WaitTillRestart());
-        }
-    }
-
-    IEnumerator WaitTillRestart()
-    {
-        yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-}
-/*public class EndLevelTeleport : MonoBehaviour
-{
+    public Transform spawnPoint;
     private bool isReloading = false;
+    private GameObject player;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = spawnPoint.transform.position;
+        player.transform.rotation = spawnPoint.transform.rotation;
+    }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !isReloading)
         {
             isReloading = true;
-            StartCoroutine(WaitTillRestart());
+            StartCoroutine(Restart());
         }
     }
 
-    IEnumerator WaitTillRestart()
+    IEnumerator Restart()
     {
-        yield return new WaitForSeconds(0.5f);
-
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.buildIndex);
 
-        yield return null;
+        yield return new WaitForSeconds(0.5f);
 
         if (PlayerManager.instance != null)
         {
-            PlayerManager.instance.transform.position = PlayerManager.instance.startingPosition;
-        }
-
-        if (CameraHandler.singleton != null)
-        {
-            CameraHandler.singleton.ResetCamera();
+            player.transform.position = spawnPoint.transform.position;
+            player.transform.rotation = spawnPoint.transform.rotation;
         }
 
         isReloading = false;
     }
-}*/
+}

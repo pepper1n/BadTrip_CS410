@@ -36,7 +36,7 @@ public class CameraHandler : MonoBehaviour
     
     void Awake()
     {
-        /*if (singleton == null)
+        if (singleton == null)
         {
             singleton = this;
             DontDestroyOnLoad(gameObject);
@@ -45,8 +45,6 @@ public class CameraHandler : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        */
-        singleton = this;
 
         myTransform = transform;
         defaultPosition = cameraTransform.localPosition.z;
