@@ -1,19 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using BT;
+
 public class EndLevelTeleport : MonoBehaviour
 {
-    public Transform spawnPoint;
-    private bool isReloading = false;
+    private GameObject spawnPoint;
     private GameObject player;
 
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = spawnPoint.transform.position;
-        player.transform.rotation = spawnPoint.transform.rotation;
-    }
+    private bool isReloading = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -27,15 +21,33 @@ public class EndLevelTeleport : MonoBehaviour
     IEnumerator Restart()
     {
         Scene currentScene = SceneManager.GetActiveScene();
+        Debug.Log("Restarting");
         SceneManager.LoadScene(currentScene.buildIndex);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return null;
+    }
 
-        if (PlayerManager.instance != null)
-        {
-            player.transform.position = spawnPoint.transform.position;
-            player.transform.rotation = spawnPoint.transform.rotation;
-        }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        player = GameObject.FindWithTag("Player");
+        spawnPoint = GameObject.FindWithTag("spawnPoint");
+        TeleportPlayer();
+    }
+
+    void TeleportPlayer()
+    {
+        player.transform.position = spawnPoint.transform.position;
+        player.transform.rotation = spawnPoint.transform.rotation;
 
         isReloading = false;
     }
