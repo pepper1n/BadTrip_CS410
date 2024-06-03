@@ -7,6 +7,7 @@ namespace BT
 {
     public class HostileBehavior : MonoBehaviour
     {
+        public GameObject coin;
         private PlayerLocomotion pl;
         public float maxHealth = 30;
         private float currentHealth = 30;
@@ -47,7 +48,9 @@ namespace BT
         public void Kill()
         {
             Debug.Log("Killed " + gameObject.name);
+            GameObject enemy = Instantiate(coin, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+            
             
             foreach (GameObject room in enemyRooms)
             {

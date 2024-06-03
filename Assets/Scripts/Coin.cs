@@ -27,7 +27,7 @@ public class Coin : MonoBehaviour
         if (other.name == "Player")
         {
             coin.Play();
-            pl.gold++;
+            pl.gold+=10;
             // Destroy this game object
             Destroy(gameObject, coin.clip.length);
         }

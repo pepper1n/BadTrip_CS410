@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4587,6 +4587,30 @@ MonoBehaviour:
     maxPosition: {x: 0, y: 0}
     obligatory: 1
   - room: {fileID: 7633575498576695660, guid: 5894d1fb215821c4b968f7eac45e4475, type: 3}
+    minPosition: {x: 0, y: 0}
+    maxPosition: {x: 4, y: 4}
+    obligatory: 0
+  - room: {fileID: 7633575498576695660, guid: 1efbbb2edeea8c343b89d3054935d1c3, type: 3}
+    minPosition: {x: 0, y: 0}
+    maxPosition: {x: 4, y: 4}
+    obligatory: 0
+  - room: {fileID: 7633575498576695660, guid: 6a4065a17c80c64409c75bfdda934c79, type: 3}
+    minPosition: {x: 0, y: 0}
+    maxPosition: {x: 4, y: 4}
+    obligatory: 0
+  - room: {fileID: 7633575498576695660, guid: 19cb77b503480154db1a51a98ec99ec9, type: 3}
+    minPosition: {x: 0, y: 0}
+    maxPosition: {x: 4, y: 4}
+    obligatory: 0
+  - room: {fileID: 7633575498576695660, guid: fc7a94fbf1ea9ff4a9ba32da16205a8e, type: 3}
+    minPosition: {x: 0, y: 0}
+    maxPosition: {x: 4, y: 4}
+    obligatory: 0
+  - room: {fileID: 7633575498576695660, guid: fc7a94fbf1ea9ff4a9ba32da16205a8e, type: 3}
+    minPosition: {x: 0, y: 0}
+    maxPosition: {x: 4, y: 4}
+    obligatory: 0
+  - room: {fileID: 7633575498576695660, guid: 19cb77b503480154db1a51a98ec99ec9, type: 3}
     minPosition: {x: 0, y: 0}
     maxPosition: {x: 4, y: 4}
     obligatory: 0
