@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShooterAttack : MonoBehaviour
 {
-    private Transform player;
     private Transform playerTarget;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
@@ -16,7 +15,6 @@ public class ShooterAttack : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
         playerTarget = GameObject.FindWithTag("playerTarget").transform;
         attackTimer = attackDelay;
     }
@@ -27,7 +25,7 @@ public class ShooterAttack : MonoBehaviour
         {
             attackTimer -= Time.deltaTime;
         }
-        Vector3 directionToPlayer = player.position - transform.position;
+        Vector3 directionToPlayer = playerTarget.position - transform.position;
         if (directionToPlayer.magnitude <= range && attackTimer <= 0)
         {
             Shoot();

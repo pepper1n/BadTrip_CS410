@@ -32,7 +32,7 @@ public class StateFlipping : MonoBehaviour
             if (timer >= trippyDuration)
             {
                 timer -= trippyDuration;
-                Swap();
+                //Swap();
             }
         }
         else
@@ -40,10 +40,16 @@ public class StateFlipping : MonoBehaviour
             if (timer >= fleshDuration)
             {
                 timer -= fleshDuration;
-                Swap();
+                //Swap();
             }
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Swap();
+        }
     }
+
+
 
     void Swap()
     {

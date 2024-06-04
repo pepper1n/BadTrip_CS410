@@ -11,6 +11,8 @@ TagManager:
   - playerTarget
   - enemyRoom
   - safeRoom
+  - merchant
+  - spawnPoint
   layers:
   - Default
   - TransparentFX

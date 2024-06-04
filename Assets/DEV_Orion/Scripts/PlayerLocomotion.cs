@@ -13,6 +13,7 @@ namespace BT
         Transform cameraObject;
         InputHandler inputHandler;
         Vector3 moveDirection;
+        private Coroutine slowRemovalCoroutine;
 
         [HideInInspector]
         public Transform myTransform;
@@ -30,9 +31,9 @@ namespace BT
         [SerializeField]
         public float gold = 999;
         [SerializeField]
-        float movementSpeed = 5;
+        public float movementSpeed = 5;
         [SerializeField]
-        float sprintSpeed = 7;
+        public float sprintSpeed = 7;
         [SerializeField]
         float rotationSpeed = 10;
         [SerializeField]
@@ -41,9 +42,8 @@ namespace BT
         float jumpTimer = 0;
         public float jumpCount = 1;
         float jumps = 0;
-
+        public bool isSlowed = false;
         //public bool falling = false;
-
 
         void Start()
         {
@@ -229,6 +229,50 @@ namespace BT
             {
                 jumpTimer += delta;
             }
+        }
+
+        public void ApplySlow(float intensity)
+        {
+            if (!isSlowed)
+            {
+                movementSpeed *= intensity;
+                sprintSpeed *= intensity;
+                isSlowed = true;
+            }
+        }
+
+        public void RemoveSlow(float intensity)
+        {
+            if (isSlowed)
+            {
+                movementSpeed /= intensity;
+                sprintSpeed /= intensity;
+                isSlowed = false;
+            }
+        }
+
+        public void DelaySlowRemoval(float duration, float intensity)
+        {
+            if (slowRemovalCoroutine != null)
+            {
+                StopCoroutine(slowRemovalCoroutine);
+            }
+            slowRemovalCoroutine = StartCoroutine(DelaySlowRemovalCoroutine(duration, intensity));
+        }
+
+        public void CancelSlowRemoval()
+        {
+            if (slowRemovalCoroutine != null)
+            {
+                StopCoroutine(slowRemovalCoroutine);
+                slowRemovalCoroutine = null;
+            }
+        }
+
+        private IEnumerator DelaySlowRemovalCoroutine(float duration, float intensity)
+        {
+            yield return new WaitForSeconds(duration);
+            RemoveSlow(intensity);
         }
     }
 }
