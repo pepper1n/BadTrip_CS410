@@ -4401,31 +4401,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2514941924235982765, guid: 4167ae12c2b0a5e4c93e3a61c5fea191, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7736082785097310996}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4167ae12c2b0a5e4c93e3a61c5fea191, type: 3}
---- !u!1 &1977909292393356273 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2514941924235982765, guid: 4167ae12c2b0a5e4c93e3a61c5fea191, type: 3}
-  m_PrefabInstance: {fileID: 4148989944789888092}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7736082785097310996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977909292393356273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee809314e28354942ad937a7d6a82029, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickups: []
-  enemySpawnPoint: {fileID: 0}
-  spawnRotation: {x: 0, y: 0, z: 0}
 --- !u!4 &7248763806233040626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6704984745180461742, guid: 4167ae12c2b0a5e4c93e3a61c5fea191, type: 3}

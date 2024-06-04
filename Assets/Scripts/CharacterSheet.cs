@@ -31,6 +31,7 @@ public class CharacterSheet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        updateCharacterSheet();
         if (Input.GetKeyDown(KeyCode.C))
         {
             openCharacterSheet();
@@ -46,23 +47,23 @@ public class CharacterSheet : MonoBehaviour
 
     }
 
-    void openCharacterSheet()
+    void updateCharacterSheet()
     {
         TextMeshProUGUI wealth = GameObject.Find("Wealth/Amount").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI healthUpgrade = GameObject.Find("Health/Upgrade Amount").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI speedUpgrade = GameObject.Find("Speed/Upgrade Amount").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI damageUpgrade = GameObject.Find("Damage/Upgrade Amount").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI jumpUpgrade = GameObject.Find("Jump/Upgrade Amount").GetComponent<TextMeshProUGUI>();
-        /*TextMeshProUGUI secretUpgrade = GameObject.Find("Secret Sight/Buy/Price").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI enemyUpgrade = GameObject.Find("Enemy Sight/Buy/Price").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI allyUpgrade = GameObject.Find("Ally/Buy/Price").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI attackSpeedUpgrade = GameObject.Find("Attack Speed/Buy/Price").GetComponent<TextMeshProUGUI>();*/
-
         wealth.text = pl.gold.ToString();
         healthUpgrade.text = "+ " + pm.shopHealth.ToString();
         damageUpgrade.text = "+ " + pl.shopDamage.ToString();
         speedUpgrade.text = "+ " + pl.shopSpeed.ToString();
         jumpUpgrade.text = "+ " + pl.shopJump.ToString();
+
+    }
+    void openCharacterSheet()
+    {
+     
         canvasGroup.alpha = 1;
 
         //wealth = GameObject.Find("Wealth/Amount").GetComponent<TextMeshProUGUI>();
