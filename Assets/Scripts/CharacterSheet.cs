@@ -37,7 +37,7 @@ public class CharacterSheet : MonoBehaviour
             sheetOpen = true;
         }
 
-        if(sheetOpen && Input.GetKeyDown(KeyCode.Escape))
+        if((sheetOpen && Input.GetKeyDown(KeyCode.Escape)) )
         {
             closeCharacterSheet();
             sheetOpen = false;

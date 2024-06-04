@@ -654,11 +654,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192c244dad9ed9445b5b0f58235d2170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: {fileID: 8518887499778857771, guid: dd5440a779d43004b9895e6bec30dcb2, type: 3}
+  coin: {fileID: 1000012946874890, guid: 586acbe765df7c34385298970076297e, type: 3}
   maxHealth: 30
   currentHealth: 30
   enemyRooms: []
   isRaged: 0
+  player: {fileID: 0}
+  spawnRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &8840357968756207131
 GameObject:
   m_ObjectHideFlags: 0

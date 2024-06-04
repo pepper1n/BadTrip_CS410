@@ -8,6 +8,7 @@ public class ActiveRoom : MonoBehaviour
     public AudioClip fightAudio;
     public GameObject doors;
     public GameObject spawners;
+    public GameObject shopPrefab;
     private GameObject ambientMusic;
     private AudioSource audioSource;
     private bool triggered;
@@ -17,11 +18,15 @@ public class ActiveRoom : MonoBehaviour
     private GameObject enemy;
     private bool isTrippy;
     public GameObject teleporter;
+    public Transform shopSpawn;
+    public GameObject shop;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        shop = GameObject.Find("SlenderShop");
         ambientMusic = GameObject.Find("MusicSource");
         audioSource = GetComponent<AudioSource>();
         delta = Time.fixedDeltaTime;
@@ -44,10 +49,12 @@ public class ActiveRoom : MonoBehaviour
 
             // spawn enemies
             spawners.SetActive(true);
+
+            //shop.SetActive(false);
         }
 
         // add enemies to list 
-        if (other.gameObject.name.Contains("Enemy"))
+        if (other.gameObject.name.Contains("Enemy") || other.gameObject.name.Contains("Common"))
         {
             Debug.Log(other.gameObject.name);
             enemy = other.gameObject.transform.parent.gameObject;
@@ -105,6 +112,11 @@ public class ActiveRoom : MonoBehaviour
 
             // open doors
             doors.SetActive(false);
+            shop.transform.position = shopSpawn.transform.position + new Vector3(0, 0, 2);
+            //spawn shop
+            //shop.SetActive(true);
+            /*GameObject shop = Instantiate(shopPrefab, shopSpawn.position, Quaternion.identity);
+            shop.SetActive(true);*/
         }     
     }
 

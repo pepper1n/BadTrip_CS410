@@ -7,11 +7,13 @@ public class Coin : MonoBehaviour
 {
     private AudioSource coin;
     public PlayerLocomotion pl;
+    private MeshRenderer mesh;
     // Start is called before the first frame update
     void Start()
     {
         pl = FindObjectOfType<PlayerLocomotion>();
         coin = GetComponent<AudioSource>();
+        mesh = GetComponent<MeshRenderer>();
 
     }
 
@@ -23,12 +25,14 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the object collided with has the tag "Player"
         if (other.name == "Player")
         {
-            coin.Play();
-            pl.gold+=10;
-            // Destroy this game object
+            if (!coin.isPlaying)
+            {
+                coin.Play();
+                pl.gold += 50;
+            }
+            mesh.enabled = false;
             Destroy(gameObject, coin.clip.length);
         }
     }

@@ -6,12 +6,14 @@ using BT;
 public class SpeedPickUp : MonoBehaviour
 {
     private AudioSource woosh;
-    public PlayerManager pm;
+    public PlayerLocomotion pm;
+    private MeshRenderer mesh;
     // Start is called before the first frame update
     void Start()
     {
-        pm = FindObjectOfType<PlayerManager>();
+        pm = FindObjectOfType<PlayerLocomotion>();
         woosh = GetComponent<AudioSource>();
+        mesh = GetComponent<MeshRenderer>();
 
     }
 
@@ -26,8 +28,13 @@ public class SpeedPickUp : MonoBehaviour
         // Check if the object collided with has the tag "Player"
         if (other.name == "Player")
         {
-            woosh.Play();
-            pm.speedBoost();
+            if (!woosh.isPlaying)
+            {
+                woosh.Play();
+                pm.shopSpeed++;
+
+            }
+            mesh.enabled = false;
             // Destroy this game object
             Destroy(gameObject, woosh.clip.length);
         }
