@@ -8,7 +8,7 @@ public class ChaserAttack : MonoBehaviour
     private Transform player;
     private PlayerManager playerManager;
     public float range;
-    public float     damage;
+    public float damage;
     public float attackDelay;
     public float attackTimer;
 

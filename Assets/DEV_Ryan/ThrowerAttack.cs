@@ -21,12 +21,12 @@ public class ThrowerAttack : MonoBehaviour
         playerTarget = GameObject.FindWithTag("playerTarget").transform;
         attackTimer = attackDelay;
         player = GameObject.FindWithTag("Player").transform;
-        throwerLocomotion = GetComponent<ThrowerLocomotion>();
         stateScript = player.GetComponent<StateFlipping>();
     }
 
     void Update()
     {
+        throwerLocomotion = GetComponent<ThrowerLocomotion>();
         if (attackTimer >= 0)
         {
             attackTimer -= Time.deltaTime;

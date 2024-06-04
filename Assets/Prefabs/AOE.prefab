@@ -147,7 +147,7 @@ MonoBehaviour:
   slowDuration: 3
   slowIntensity: 0.75
   rageDuration: 3
-  rageIntensity: 1.2
+  rageIntensity: 1.5
 --- !u!65 &6666544754570045945
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
   slowDuration: 3
   slowIntensity: 0.75
   rageDuration: 3
-  rageIntensity: 1.2
+  rageIntensity: 1.5
 --- !u!65 &5027457131054836294
 BoxCollider:
   m_ObjectHideFlags: 0

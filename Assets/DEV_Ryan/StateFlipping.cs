@@ -14,7 +14,7 @@ public class StateFlipping : MonoBehaviour
 
     public bool isTrippy = true;
     public float trippyDuration = 5;
-    public float fleshDuration = 5;
+    public float fleshHitsNeeded = 5;
     public float timer = 0;
 
     Color trippyColor = new Color(1, 0, 1, 1);
@@ -23,32 +23,30 @@ public class StateFlipping : MonoBehaviour
     private GameObject fleshAudio;
     private AudioSource[] trippyAudioSources;
 
-
     void Update()
     {
-        timer += Time.deltaTime;
         if (isTrippy)
         {
+            timer += Time.deltaTime;
             if (timer >= trippyDuration)
             {
-                timer -= trippyDuration;
-                //Swap();
+                timer = 0;
+                Swap();
             }
         }
         else
         {
-            if (timer >= fleshDuration)
+            if (timer >= fleshHitsNeeded)
             {
-                timer -= fleshDuration;
-                //Swap();
+                timer = 0;
+                Swap();
             }
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Swap();
+            //Swap();
         }
     }
-
 
 
     void Swap()

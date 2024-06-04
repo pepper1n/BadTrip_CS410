@@ -61,7 +61,7 @@ namespace BT
             }
             else
             {
-                fleshBar.maxValue = stateScript.fleshDuration;
+                fleshBar.maxValue = stateScript.fleshHitsNeeded;
                 fleshBar.value = stateScript.timer;
             }
         }

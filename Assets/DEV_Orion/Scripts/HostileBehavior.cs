@@ -10,12 +10,15 @@ namespace BT
         public GameObject coin;
         private PlayerLocomotion pl;
         public float maxHealth = 30;
-        private float currentHealth = 30;
+        public float currentHealth = 30;
         private Slider[] healthBars;
         public GameObject[] enemyRooms;
-        public UnityEngine.AI.NavMeshAgent[] agents;
+        private UnityEngine.AI.NavMeshAgent[] agents;
         private Coroutine rageRemovalCoroutine;
         public bool isRaged;
+        private StateFlipping stateScript;
+        private bool isTrippy;
+        private Transform coinLocation;
 
         public void Start()
         {
@@ -26,13 +29,14 @@ namespace BT
             {
                 healthBar.maxValue = maxHealth;
             }
-
+            stateScript = FindObjectOfType<StateFlipping>();
             enemyRooms = GameObject.FindGameObjectsWithTag("enemyRoom");
             agents = GetComponentsInChildren<UnityEngine.AI.NavMeshAgent>(true);
         }
 
         public void Update()
         {
+            isTrippy = stateScript.isTrippy;
             foreach (Slider healthBar in healthBars)
             {
                 if (currentHealth == maxHealth || currentHealth <= 0)
@@ -51,8 +55,29 @@ namespace BT
         public void Kill()
         {
             Debug.Log("Killed " + gameObject.name);
-            GameObject enemy = Instantiate(coin, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            Transform[] children = GetComponentsInChildren<Transform>(true);
+            foreach (Transform child in children)
+            {
+                if (child.CompareTag("trippyStructure") || child.CompareTag("fleshStructure"))
+                {
+                    if (child.gameObject.activeSelf)
+                    {
+                        coinLocation = child.transform;
+                        RaycastHit hit;
+                        if (Physics.Raycast(coinLocation.position, Vector3.down, out hit, Mathf.Infinity, LayerMask.GetMask("Floor")))
+                        {
+                            Vector3 coinPosition = hit.point;
+                            GameObject enemy = Instantiate(coin, coinPosition, Quaternion.identity);
+                            Debug.Log("Coin dropped");
+                        }
+                    }
+                }
+            }
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+            Destroy(gameObject);
             
             
             foreach (GameObject room in enemyRooms)
@@ -79,6 +104,32 @@ namespace BT
                 {
                     agent.speed *= intensity;
                     isRaged = true;
+                    foreach (Transform child in transform)
+                    {
+                        var blackWidowAttack = child.GetComponent<BlackWidowAttack>();
+                        if (blackWidowAttack != null)
+                        {
+                            blackWidowAttack.attackDelay /= intensity;
+                        }
+
+                        var chaserAttack = child.GetComponent<ChaserAttack>();
+                        if (chaserAttack != null)
+                        {
+                            chaserAttack.attackDelay /= intensity;
+                        }
+
+                        var shooterAttack = child.GetComponent<ShooterAttack>();
+                        if (shooterAttack != null)
+                        {
+                            shooterAttack.attackDelay /= intensity;
+                        }
+
+                        var throwerAttack = child.GetComponent<ThrowerAttack>();
+                        if (throwerAttack != null)
+                        {
+                            throwerAttack.attackDelay /= intensity;
+                        }
+                    }
                 }
             }
         }
@@ -91,6 +142,32 @@ namespace BT
                 {
                     agent.speed /= intensity;
                     isRaged = false;
+                    foreach (Transform child in transform)
+                    {
+                        var blackWidowAttack = child.GetComponent<BlackWidowAttack>();
+                        if (blackWidowAttack != null)
+                        {
+                            blackWidowAttack.attackDelay *= intensity;
+                        }
+
+                        var chaserAttack = child.GetComponent<ChaserAttack>();
+                        if (chaserAttack != null)
+                        {
+                            chaserAttack.attackDelay *= intensity;
+                        }
+
+                        var shooterAttack = child.GetComponent<ShooterAttack>();
+                        if (shooterAttack != null)
+                        {
+                            shooterAttack.attackDelay *= intensity;
+                        }
+
+                        var throwerAttack = child.GetComponent<ThrowerAttack>();
+                        if (throwerAttack != null)
+                        {
+                            throwerAttack.attackDelay *= intensity;
+                        }
+                    }
                 }
             }
         }

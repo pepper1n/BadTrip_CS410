@@ -157,9 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192c244dad9ed9445b5b0f58235d2170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coin: {fileID: 8518887499778857771, guid: dd5440a779d43004b9895e6bec30dcb2, type: 3}
   maxHealth: 30
+  currentHealth: 30
   enemyRooms: []
-  agents: []
   isRaged: 0
 --- !u!1 &3632854349853632572
 GameObject:
@@ -536,8 +537,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!54 &4875863348031241565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1032,8 +1033,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!54 &799772776052401492
 Rigidbody:
   m_ObjectHideFlags: 0

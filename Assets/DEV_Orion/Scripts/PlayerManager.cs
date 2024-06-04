@@ -13,6 +13,8 @@ namespace BT
         public GameObject player;
         public Vector3 startingPosition;
 
+        private Rigidbody rb;
+
         InputHandler inputHandler;
         Animator anim;
 
@@ -21,8 +23,10 @@ namespace BT
         public float invulnTime = 0.25f;
         public float currentHealth;
         public float shopHealth = 0f;
+        public float trippyRegen = 10f;
 
         private bool DOT = false;
+        private bool isStandingStill;
         private float DOTduration = 0;
         private float DOTamount = 0;
         private float DOTremaining = 0;
@@ -49,6 +53,7 @@ namespace BT
             startingPosition = transform.position;
             inputHandler = GetComponent<InputHandler>();
             anim = GetComponent<Animator>();
+            rb = GetComponent<Rigidbody>();
         }
 
         void Update()
@@ -98,6 +103,16 @@ namespace BT
                     sb = false;
                 }
             }
+
+            if (rb != null)
+            {
+                isStandingStill = rb.velocity.magnitude < 0.1f;
+            }
+
+            if (isStandingStill)
+            {
+                HealPlayer();
+            }
         }
 
         public void TakeDamage(float damage)
@@ -130,6 +145,12 @@ namespace BT
         {
             pl.shopSpeed +=10;
             sb = true;
+        }
+
+        void HealPlayer()
+        {
+            currentHealth += trippyRegen * Time.deltaTime;
+            currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         }
     }
 }

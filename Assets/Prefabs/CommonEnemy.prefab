@@ -833,7 +833,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: {fileID: 8518887499778857771, guid: dd5440a779d43004b9895e6bec30dcb2, type: 3}
   maxHealth: 30
+  currentHealth: 30
   enemyRooms: []
+  isRaged: 0
 --- !u!1 &8392114415919514856
 GameObject:
   m_ObjectHideFlags: 0

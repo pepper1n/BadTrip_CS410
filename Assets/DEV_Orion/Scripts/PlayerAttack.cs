@@ -20,6 +20,9 @@ namespace BT
         public PlayerLocomotion pl;
         private Shop shopScript;
 
+        private StateFlipping stateScript;
+        private bool isTrippy;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -27,6 +30,7 @@ namespace BT
             inputHandler = player.GetComponent<InputHandler>();
             attackCollider = GetComponent<CapsuleCollider>();
             audioSource = GetComponent<AudioSource>();
+            stateScript = player.GetComponent<StateFlipping>();
         }
 
         void Update()
@@ -35,6 +39,7 @@ namespace BT
             {
                 attackTimer += Time.deltaTime;
             }
+            isTrippy = stateScript.isTrippy;
         }
 
         private void OnTriggerStay(Collider other)
@@ -48,11 +53,19 @@ namespace BT
                 {
                     otherHostile.TakeDamage(damage);
                     attackTimer = 0f;
+                    if (!isTrippy)
+                    {
+                        stateScript.timer += 1;
+                    }
                 }
                 else if (parentHostile != null)
                 {
                     parentHostile.TakeDamage(damage);
                     attackTimer = 0f;
+                    if (!isTrippy)
+                    {
+                        stateScript.timer += 1;
+                    }
                 }
             }
 
