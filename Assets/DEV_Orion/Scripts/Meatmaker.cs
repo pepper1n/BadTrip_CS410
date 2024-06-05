@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ namespace BT
         private StateFlipping stateScript;
         public Animator anim;
 
-        public float damage = 2f;
+        public float damage = 1;
         public float attackDelay = .1f;
         public float attackTimer = .1f;
 
@@ -58,6 +58,7 @@ namespace BT
                 else if (parentHostile != null)
                 {
                     parentHostile.TakeDamage(damage);
+                    Debug.Log($"damage done: {damage}");
                     stateScript.timer += damage;
                     attackTimer = 0f;
                 }

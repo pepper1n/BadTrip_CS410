@@ -7,6 +7,7 @@ namespace BT
     public class PlayerAttack : MonoBehaviour
     {
         public GameObject player;
+        public WeaponEquip weaponScript;
         private InputHandler inputHandler;
         public CapsuleCollider attackCollider;
         public float swingSpeed = .5f;
@@ -31,6 +32,7 @@ namespace BT
             attackCollider = GetComponent<CapsuleCollider>();
             audioSource = GetComponent<AudioSource>();
             stateScript = player.GetComponent<StateFlipping>();
+            weaponScript = player.GetComponent<WeaponEquip>();
         }
 
         void Update()
@@ -53,7 +55,7 @@ namespace BT
                 {
                     otherHostile.TakeDamage(damage);
                     attackTimer = 0f;
-                    if (!isTrippy)
+                    if (!isTrippy && weaponScript.activeWeapon != weaponScript.EVMM)
                     {
                         stateScript.timer += damage;
                         Debug.Log($"damage done: {damage}");
@@ -63,7 +65,7 @@ namespace BT
                 {
                     parentHostile.TakeDamage(damage);
                     attackTimer = 0f;
-                    if (!isTrippy)
+                    if (!isTrippy && weaponScript.activeWeapon != weaponScript.EVMM)
                     {
                         stateScript.timer += damage;
                         Debug.Log($"damage done: {damage}");
