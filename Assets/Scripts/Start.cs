@@ -6,7 +6,7 @@ public class Start : MonoBehaviour
     public void StartGame()
     {
         // Load the main game scene
-        SceneManager.LoadScene("SampleScene"); // Replace with your main game scene name
+        SceneManager.LoadScene("FirstFloor"); // Replace with your main game scene name
     }
 
     public void QuitGame()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace BT
 {
@@ -61,6 +62,10 @@ namespace BT
 
         void Update()
         {
+            if(currentHealth <= 0f)
+            {
+                Die();
+            }
             isTrippy = stateScript.isTrippy;
             inputHandler.isInteracting = anim.GetBool("isInteracting");
             inputHandler.rollFlag = false;
@@ -126,6 +131,13 @@ namespace BT
                 currentHealth -= damage;
                 damageTimer = invulnTime;
             }
+        }
+
+        public void Die()
+        {
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("Start");
+
         }
 
         public void InflictPoison(float damage, float duration)

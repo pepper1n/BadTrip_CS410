@@ -86,6 +86,7 @@ public class StateFlipping : MonoBehaviour
 
     public void Swap()
     {
+        flipAudio.Play();
         isTrippy = !isTrippy;
         GameObject[] stateStructures = GameObject.FindGameObjectsWithTag("stateStructure");
         foreach (GameObject stateStructure in stateStructures)
