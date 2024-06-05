@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 5187989292919560468}
   - component: {fileID: 4736264691567669134}
   m_Layer: 0
-  m_Name: WeaponRoom
+  m_Name: StartingRoom
   m_TagString: safeRoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4898,7 +4898,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1577502939348919785, guid: 7d0e1fb7a3639f54bb95b88b3ff47771, type: 3}
       propertyPath: nextLevel
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1822134660025924660, guid: 7d0e1fb7a3639f54bb95b88b3ff47771, type: 3}
       propertyPath: m_Name

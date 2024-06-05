@@ -113,6 +113,13 @@ public class ActiveRoom : MonoBehaviour
             // open doors
             doors.SetActive(false);
             shop.transform.position = shopSpawn.transform.position + new Vector3(0, 0, 2);
+            foreach (Transform child in transform)
+            {
+                if (child.CompareTag("LevelExit"))
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
             //spawn shop
             //shop.SetActive(true);
             /*GameObject shop = Instantiate(shopPrefab, shopSpawn.position, Quaternion.identity);
