@@ -7,11 +7,13 @@ public class Health : MonoBehaviour
 {
     private AudioSource health;
     public PlayerManager pm;
+    private MeshRenderer mesh;
     // Start is called before the first frame update
     void Start()
     {
         pm = FindObjectOfType<PlayerManager>();
         health = GetComponent<AudioSource>();
+        mesh = GetComponent<MeshRenderer>();
 
     }
 
@@ -30,9 +32,10 @@ public class Health : MonoBehaviour
             {
                 health.Play();
                 pm.currentHealth += 20;
+                pm.shopHealth += 20;
 
             }
-            // Destroy this game object
+            mesh.enabled = false;
             Destroy(gameObject, health.clip.length);
         }
     }

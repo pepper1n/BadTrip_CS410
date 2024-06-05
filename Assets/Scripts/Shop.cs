@@ -19,12 +19,13 @@ public class Shop : MonoBehaviour
     private bool pushed = false;
     public PlayerLocomotion pl;
     public PlayerManager pm;
+    public ShopSheet ss;
     public FadeToBlack fade;
     private PlayerAttack playerAttackScript;
     bool dying = false;
     private GameObject deathCanvas;
     private CanvasGroup deathCanvasGroup;
-    private GameObject shop;
+    public GameObject shop;
 
     //Shop prices
     private float healthCost = 30f;
@@ -41,30 +42,37 @@ public class Shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        music = GameObject.Find("MusicSource");
-        fade = FindObjectOfType<FadeToBlack>();
-        wealth = GameObject.Find("ShopUI/Wealth/Amount").GetComponent<TextMeshProUGUI>();
-        shop = GameObject.Find("Shop");
-        setPrices();
-        shop.SetActive(false);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         player = GameObject.FindWithTag("Player");
-        audioSources = GetComponents<AudioSource>();
         pl = player.GetComponent<PlayerLocomotion>();
         pm = player.GetComponent<PlayerManager>();
+        Debug.Log("hi");
+        music = GameObject.Find("MusicSource");
+        fade = FindObjectOfType<FadeToBlack>();
+        shop = GameObject.Find("Shop");
+        shop.SetActive(true);
+        setPrices();
+        shop.SetActive(false);
+        //ss = shop.GetComponent<ShopSheet>();
+        //ss.canvasGroup.alpha = 0;
+        audioSources = GetComponents<AudioSource>();
+
     }
 
 
     // Update is called once per frame
     void Update()
     {
+
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (distance <= range)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                //ss.canvasGroup.interactable = true;
+                //ss.canvasGroup.alpha = 1;
                 shop.SetActive(true);
+                setPrices();
+                wealth = GameObject.Find("ShopUI/Wealth/Amount").GetComponent<TextMeshProUGUI>();
                 wealth.text = pl.gold.ToString();
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
@@ -91,10 +99,11 @@ public class Shop : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 isShopping = false;
-                shop.SetActive(false);
+                //ss.canvasGroup.alpha = 0;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 player.GetComponent<InputHandler>().enabled = true;
+                shop.SetActive(false);
             }
 
         }
@@ -186,9 +195,10 @@ public class Shop : MonoBehaviour
 
     public void buyHealth()
     {
-        if(pl.gold >= healthCost)
+        if (pl.gold >= healthCost)
         {
             audioSources[2].Play();
+            pm.shopHealth += 10;
             pm.currentHealth += 10;
             pl.gold -= healthCost;
             wealth.text = pl.gold.ToString();

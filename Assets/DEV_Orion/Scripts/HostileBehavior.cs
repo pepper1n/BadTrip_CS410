@@ -19,9 +19,16 @@ namespace BT
         private StateFlipping stateScript;
         private bool isTrippy;
         private Transform coinLocation;
+        public GameObject player;
+        public Vector3 spawnRotation;
+        Quaternion rotation;
+
 
         public void Start()
         {
+            spawnRotation = new Vector3(-90, 0, 0);
+            rotation = Quaternion.Euler(spawnRotation);
+            player = GameObject.FindWithTag("Player");
             pl = FindObjectOfType<PlayerLocomotion>();
             currentHealth = maxHealth;
             healthBars = GetComponentsInChildren<Slider>(true);
@@ -66,9 +73,9 @@ namespace BT
                         RaycastHit hit;
                         if (Physics.Raycast(coinLocation.position, Vector3.down, out hit, Mathf.Infinity, LayerMask.GetMask("Floor")))
                         {
-                            Vector3 coinPosition = hit.point;
-                            GameObject enemy = Instantiate(coin, coinPosition, Quaternion.identity);
-                            Debug.Log("Coin dropped");
+                            //Vector3 coinPosition = hit.point;
+                            //GameObject enemy = Instantiate(coin, coinPosition, Quaternion.identity);
+                            //Debug.Log("Coin dropped");
                         }
                     }
                 }
@@ -78,6 +85,10 @@ namespace BT
                 Destroy(child.gameObject);
             }
             Destroy(gameObject);
+            GameObject drop = Instantiate(coin, player.transform.position + player.transform.forward *2 + new Vector3(0, 1, 0), rotation);
+            drop.SetActive(true);
+            Destroy(this.gameObject);
+
             
             
             foreach (GameObject room in enemyRooms)
