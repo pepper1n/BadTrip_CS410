@@ -11,6 +11,8 @@ using Debug = UnityEngine.Debug;
 public class StateFlipping : MonoBehaviour
 {
     GameObject[] stateStructures;
+    public AudioClip fightAudio;
+    public AudioSource flipAudio;
 
     public bool isTrippy = true;
     public float trippyDuration = 5;
@@ -67,6 +69,7 @@ public class StateFlipping : MonoBehaviour
     
     public void doSwap()
     {
+        flipAudio.Play();
         swapTimer = 0f;
         swapped = true;
         Swap();
