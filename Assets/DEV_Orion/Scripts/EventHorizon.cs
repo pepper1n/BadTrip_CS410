@@ -11,6 +11,7 @@ namespace BT
         public Transform bulletSpawn;
         public Camera camera;
         private InputHandler inputHandler;
+        public AudioSource cast;
 
         public float damage = 10f;
         public float attackDelay = .5f;
@@ -46,6 +47,10 @@ namespace BT
         {
             if (attackTimer >= attackDelay)
             {
+                if(!cast.isPlaying)
+                {
+                    cast.Play();
+                }
                 int layerMask = 1 << 10;
                 layerMask = ~layerMask;
                 Vector3 ScreenCentreCoordinates = new Vector3(0.5f, 0.5f, 0f);
