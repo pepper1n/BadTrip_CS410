@@ -30,9 +30,9 @@ public class Shop : MonoBehaviour
     Quaternion facing;
 
     //Shop prices
-    private float healthCost = 30f;
-    private float speedCost = 60f;
-    private float damageCost = 45f;
+    private float healthCost = 10f;
+    private float speedCost = 20f;
+    private float damageCost = 20f;
     private float attackSpeedCost = 40f;
     private float jumpCost = 10f;
     private float secretCost = 999f;
