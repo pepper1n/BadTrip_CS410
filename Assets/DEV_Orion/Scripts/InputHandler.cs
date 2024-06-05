@@ -25,10 +25,11 @@ namespace BT
         public bool targetFlag;
         public float rollInputTimer;
         public bool isInteracting;
+        public bool canAttack;
 
         PlayerControls inputActions;
         CameraHandler cameraHandler;
-        WeaponEquip weaponEquip;
+        public WeaponEquip weaponEquip;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -133,16 +134,28 @@ namespace BT
 
         private void HandleAttackInput(float delta)
         {
+            if (weaponEquip.activeWeapon == null)
+            {
+                canAttack = false;
+            }
+            else
+            {
+                canAttack = true;
+            }
             p_Input = inputActions.PlayerActions.Punch.IsPressed();
-            if (p_Input)
+            if (canAttack && p_Input)
             {
                 punchFlag = true;
 
-                if  (!audioSource.isPlaying)
+                if (!audioSource.isPlaying && (weaponEquip.activeWeapon == weaponEquip.Sword || weaponEquip.activeWeapon == weaponEquip.Hammer))
                 {
                     audioSource.clip = attackSounds[Random.Range(0, attackSounds.Length)];
                     audioSource.Play();
                 }
+            }
+            else
+            {
+                punchFlag = false;
             }
         }
 

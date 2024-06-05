@@ -183,9 +183,18 @@ namespace BT
             {
                 return;
             }
-            if (inputHandler.punchFlag && !(inputHandler.rollFlag))
+            if (inputHandler.punchFlag && !(inputHandler.rollFlag) && inputHandler.weaponEquip.activeWeapon != inputHandler.weaponEquip.EVMM)
             {
-                animatorHandler.PlayTargetAnimation("Punch", true);
+                //animatorHandler.PlayTargetAnimation("Punch", true);
+                animatorHandler.anim.SetBool("isAttacking", true);
+            }
+            else if (inputHandler.punchFlag && inputHandler.weaponEquip.activeWeapon == inputHandler.weaponEquip.EVMM)
+            {
+                animatorHandler.anim.SetBool("isAttacking", true);
+            }
+            else
+            {
+                animatorHandler.anim.SetBool("isAttacking", false);
             }
         }
 

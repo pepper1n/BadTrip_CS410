@@ -13,7 +13,7 @@ namespace BT
         public GameObject Weapon1 = null;
         public GameObject Weapon2 = null;
         public GameObject Weapon3 = null;
-        private GameObject activeWeapon;
+        public GameObject activeWeapon = null;
         private GameObject previousWeapon;
         public AudioClip drawSwordSound;
         public AudioClip drawHammerSound;

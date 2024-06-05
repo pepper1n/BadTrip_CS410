@@ -9,9 +9,13 @@ namespace BT
         public Animator anim;
         public InputHandler inputHandler;
         public PlayerLocomotion playerLocomotion;
+        public WeaponEquip WE;
+        public StateFlipping SF;
         int vertical;
         int horizontal;
         public bool canRotate;
+        public bool staffAnim = false;
+        public bool meatAnim = false;
 
         public void Initialize()
         {
@@ -20,6 +24,13 @@ namespace BT
             playerLocomotion = GetComponent<PlayerLocomotion>();
             vertical = Animator.StringToHash("Vertical");
             horizontal = Animator.StringToHash("Horizontal");
+            WE = GetComponent<WeaponEquip>();
+            SF = GetComponent<StateFlipping>();
+        }
+
+        public void Update()
+        {
+            WeaponAnimHandler();
         }
 
         public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement, bool isSprinting)
@@ -115,6 +126,30 @@ namespace BT
             Vector3 velocity = deltaPosition / delta;
             playerLocomotion.rigidbody.velocity = velocity;
 
+        }
+
+        public void WeaponAnimHandler()
+        {
+            if (WE.activeWeapon == WE.EVMM)
+            {
+                if (SF.isTrippy)
+                {
+                    anim.SetBool("MMHold", false);
+                    anim.SetBool("StaffHold", true);
+                }
+                else
+                {
+                    //meatmaker animation logic
+                    anim.SetBool("StaffHold", false);
+                    anim.SetBool("MMHold", true);
+
+                }
+            }
+            else
+            {
+                anim.SetBool("StaffHold", false);
+                anim.SetBool("MMHold", false);
+            }
         }
 
     }
