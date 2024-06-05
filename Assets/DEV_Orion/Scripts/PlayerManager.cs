@@ -118,7 +118,7 @@ namespace BT
                 isStandingStill = rb.velocity.magnitude < 0.1f;
             }
 
-            if (isTrippy && isStandingStill)
+            if (!isTrippy && isStandingStill)
             {
                 HealPlayer();
             }
