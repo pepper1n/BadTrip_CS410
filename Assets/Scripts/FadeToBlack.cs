@@ -10,17 +10,20 @@ public class FadeToBlack : MonoBehaviour
 
     public void Fade()
     {
-        float elapsedTime = 0f;
+        
         Color color = blackScreen.color;
-
-        while (elapsedTime < fadeDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            color.a = Mathf.Clamp01(elapsedTime / fadeDuration);
-            blackScreen.color = color;
-        }
-
+        blackScreen.color = color;
         color.a = 1f;
         blackScreen.color = color;
+
+    }
+
+    public void Unfade()
+    {
+        Color color = blackScreen.color;
+        blackScreen.color = color;
+        color.a = 0f;
+        blackScreen.color = color;
+
     }
 }

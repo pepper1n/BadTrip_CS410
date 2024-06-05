@@ -26,6 +26,8 @@ public class Shop : MonoBehaviour
     private GameObject deathCanvas;
     private CanvasGroup deathCanvasGroup;
     public GameObject shop;
+    Vector3 currentPosition;
+    Quaternion facing;
 
     //Shop prices
     private float healthCost = 30f;
@@ -162,9 +164,23 @@ public class Shop : MonoBehaviour
             float elapsedTime = 0f;
             audioSources[4].Play();
             sliceSound = true;
-            pm.currentHealth = 0;
+            pm.currentHealth -= 20;
             fade.Fade();
-
+        }
+        if (deathTimer >= 8)
+        {
+            dying = false;
+            deathTimer = 0;
+            music.SetActive(true);
+            fade.Unfade();
+            deathSound = false;
+            sliceSound = false;
+            player.GetComponent<InputHandler>().enabled = true;
+            pushed = false;
+            triggered = false;
+            dying = false;
+            transform.position = currentPosition;
+            transform.rotation = facing;
         }
 
     }
@@ -176,17 +192,17 @@ public class Shop : MonoBehaviour
         TextMeshProUGUI healthPrice = GameObject.Find("Health/Buy/Price").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI speedPrice = GameObject.Find("Speed/Buy/Price").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI damagePrice = GameObject.Find("Damage/Buy/Price").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI secretPrice = GameObject.Find("Secret Sight/Buy/Price").GetComponent<TextMeshProUGUI>();
+        /*TextMeshProUGUI secretPrice = GameObject.Find("Secret Sight/Buy/Price").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI enemyPrice = GameObject.Find("Enemy Sight/Buy/Price").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI allyPrice = GameObject.Find("Ally/Buy/Price").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI attackSpeedPrice = GameObject.Find("Attack Speed/Buy/Price").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI attackSpeedPrice = GameObject.Find("Attack Speed/Buy/Price").GetComponent<TextMeshProUGUI>();*/
         healthPrice.text = healthCost.ToString();
         damagePrice.text = damageCost.ToString();
         speedPrice.text = speedCost.ToString();
-        secretPrice.text = secretCost.ToString();
+        /*secretPrice.text = secretCost.ToString();
         enemyPrice.text = enemyCost.ToString();
         allyPrice.text = allyCost.ToString();
-        attackSpeedPrice.text = attackSpeedCost.ToString();
+        attackSpeedPrice.text = attackSpeedCost.ToString();*/
 
 
 
@@ -196,7 +212,10 @@ public class Shop : MonoBehaviour
     {
         if (pl.gold >= healthCost)
         {
-            audioSources[2].Play();
+            if (!audioSources[2].isPlaying)
+            {
+                audioSources[2].Play();
+            }
             pm.shopHealth += 10;
             pm.currentHealth += 10;
             pl.gold -= healthCost;
@@ -208,7 +227,10 @@ public class Shop : MonoBehaviour
     {   
         if(pl.gold >= speedCost)
         {
-            audioSources[2].Play();
+            if (!audioSources[2].isPlaying)
+            {
+                audioSources[2].Play();
+            }
             pl.shopSpeed++;
             pl.gold -= speedCost;
             wealth.text = pl.gold.ToString();
@@ -220,7 +242,10 @@ public class Shop : MonoBehaviour
     {
         if (pl.gold >= damageCost)
         {
-            audioSources[2].Play();
+            if (!audioSources[2].isPlaying)
+            {
+                audioSources[2].Play();
+            }
             pl.shopDamage += 5;
             pl.gold -= damageCost;
             wealth.text = pl.gold.ToString();
@@ -232,7 +257,10 @@ public class Shop : MonoBehaviour
     {
         if (pl.gold >= secretCost)
         {
-            audioSources[2].Play();
+            if (!audioSources[2].isPlaying)
+            {
+                audioSources[2].Play();
+            }
             pl.shopSpeed++;
             pl.gold -= secretCost;
             wealth.text = pl.gold.ToString();
@@ -244,7 +272,10 @@ public class Shop : MonoBehaviour
     {
         if (pl.gold >= enemyCost)
         {
-            audioSources[2].Play();
+            if (!audioSources[2].isPlaying)
+            {
+                audioSources[2].Play();
+            }
             pl.shopSpeed++;
             pl.gold -= enemyCost;
             wealth.text = pl.gold.ToString();
@@ -256,7 +287,10 @@ public class Shop : MonoBehaviour
     {
         if (pl.gold >= allyCost)
         {
-            audioSources[2].Play();
+            if (!audioSources[2].isPlaying)
+            {
+                audioSources[2].Play();
+            }
             pl.shopSpeed++;
             pl.gold -= allyCost;
             wealth.text = pl.gold.ToString();
@@ -279,7 +313,10 @@ public class Shop : MonoBehaviour
     {
         if (pl.gold >= jumpCost)
         {
-            audioSources[2].Play();
+            if (!audioSources[2].isPlaying)
+            {
+                audioSources[2].Play();
+            }
             pl.shopJump++;
             pl.gold -= jumpCost;
             wealth.text = pl.gold.ToString();
@@ -289,6 +326,8 @@ public class Shop : MonoBehaviour
     public void dead()
     {
         dying = true;
+        currentPosition = transform.position;
+        facing = transform.rotation;
 
 
     }
