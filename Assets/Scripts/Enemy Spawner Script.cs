@@ -24,6 +24,32 @@ public class EnemySpawnerScript : MonoBehaviour
             enemy.transform.localScale = bossScale;
             hostileScript.maxHealth *= bossHealthScale;
             hostileScript.currentHealth = hostileScript.maxHealth;
+            foreach (Transform child in transform)
+            {
+                var blackWidowAttack = child.GetComponent<BlackWidowAttack>();
+                if (blackWidowAttack != null)
+                {
+                    blackWidowAttack.range *= 2f;
+                }
+
+                var chaserAttack = child.GetComponent<ChaserAttack>();
+                if (chaserAttack != null)
+                {
+                    chaserAttack.range *= 2f;
+                }
+
+                var shooterAttack = child.GetComponent<ShooterAttack>();
+                if (shooterAttack != null)
+                {
+                    shooterAttack.range *= 1.2f;
+                }
+
+                var throwerAttack = child.GetComponent<ThrowerAttack>();
+                if (throwerAttack != null)
+                {
+                    throwerAttack.range *= 1.2f;
+                }
+            }
         }
 
         enemy.SetActive(true);

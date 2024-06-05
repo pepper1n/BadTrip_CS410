@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,20 +53,20 @@ namespace BT
 
                 if (otherHostile != null)
                 {
-                    otherHostile.TakeDamage(damage);
                     attackTimer = 0f;
                     if (!isTrippy && weaponScript.activeWeapon != weaponScript.EVMM)
                     {
+                        otherHostile.TakeDamage(damage);
                         stateScript.timer += damage;
                         Debug.Log($"damage done: {damage}");
                     }
                 }
                 else if (parentHostile != null)
                 {
-                    parentHostile.TakeDamage(damage);
                     attackTimer = 0f;
                     if (!isTrippy && weaponScript.activeWeapon != weaponScript.EVMM)
                     {
+                        parentHostile.TakeDamage(damage);
                         stateScript.timer += damage;
                         Debug.Log($"damage done: {damage}");
                     }

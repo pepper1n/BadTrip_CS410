@@ -12,7 +12,7 @@ namespace BT
         private StateFlipping stateScript;
         public Animator anim;
 
-        public float damage = 1;
+        public float damage = 2f;
         public float attackDelay = .1f;
         public float attackTimer = .1f;
 

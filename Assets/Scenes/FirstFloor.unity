@@ -446,6 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 663492242}
+  weaponScript: {fileID: 0}
   attackCollider: {fileID: 0}
   swingSpeed: 0.5
   damage: 15
@@ -1240,6 +1241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 663492242}
+  weaponScript: {fileID: 0}
   attackCollider: {fileID: 0}
   swingSpeed: 0.5
   damage: 15

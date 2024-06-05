@@ -16,7 +16,7 @@ public class StateFlipping : MonoBehaviour
 
     public bool isTrippy = true;
     public float trippyDuration = 5;
-    public float fleshDamageNeeded = 100;
+    public float fleshDamageNeeded = 70;
     public float timer = 0;
     public bool swapped = false;
     public bool canSwap = true;

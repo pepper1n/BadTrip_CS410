@@ -16,6 +16,7 @@ namespace BT
 
         private Rigidbody rb;
         private StateFlipping stateScript;
+        private WeaponEquip weaponScript;
 
         InputHandler inputHandler;
         Animator anim;
@@ -58,6 +59,7 @@ namespace BT
             anim = GetComponent<Animator>();
             rb = GetComponent<Rigidbody>();
             stateScript = GetComponent<StateFlipping>();
+            weaponScript = player.GetComponent<WeaponEquip>();
         }
 
         void Update()
@@ -118,7 +120,7 @@ namespace BT
                 isStandingStill = rb.velocity.magnitude < 0.1f;
             }
 
-            if (!isTrippy && isStandingStill)
+            if (isTrippy && isStandingStill)
             {
                 HealPlayer();
             }
@@ -138,6 +140,7 @@ namespace BT
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
             SceneManager.LoadScene(0);
             currentHealth = maxHealth;
+            weaponScript.DeEquip();
         }
 
         public void InflictPoison(float damage, float duration)

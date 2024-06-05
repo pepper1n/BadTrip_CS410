@@ -112,8 +112,8 @@ namespace BT
 
         public void TakeDamage(float damage)
         {
-            Debug.Log("Damaged");
-            currentHealth -= (damage + pl.shopDamage);
+            Debug.Log($"Took damage: {damage}");
+            currentHealth -= (damage);
             if (currentHealth <= 0)
             {
                 Invoke("Kill", .25f);

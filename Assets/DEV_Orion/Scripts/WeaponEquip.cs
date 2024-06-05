@@ -82,7 +82,7 @@ namespace BT
             }
         }
 
-        void DeEquip()
+        public void DeEquip()
         {
             activeWeapon.SetActive(false);
         }

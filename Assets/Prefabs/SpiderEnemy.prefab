@@ -804,8 +804,12 @@ MonoBehaviour:
   maxHealth: 30
   currentHealth: 30
   enemyRooms: []
-  agents: []
   isRaged: 0
+  player: {fileID: 0}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  sf: {fileID: 0}
+  canSwap: 1
+  swapTime: 0
 --- !u!1 &8576494613152762087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,7 +1042,7 @@ Rigidbody:
   m_GameObject: {fileID: 3336526537850578688}
   serializedVersion: 4
   m_Mass: 10000
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -1233,7 +1237,7 @@ Rigidbody:
   m_GameObject: {fileID: 1807027914382908422}
   serializedVersion: 4
   m_Mass: 10000
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

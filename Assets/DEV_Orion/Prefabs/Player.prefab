@@ -395,6 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7705348315184807645}
+  weaponScript: {fileID: 0}
   attackCollider: {fileID: 0}
   swingSpeed: 0.5
   damage: 10
@@ -531,6 +532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7705348315184807645}
+  weaponScript: {fileID: 0}
   attackCollider: {fileID: 0}
   swingSpeed: 0.5
   damage: 10
@@ -662,6 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7705348315184807645}
+  weaponScript: {fileID: 0}
   attackCollider: {fileID: 0}
   swingSpeed: 0.5
   damage: 15
@@ -832,7 +835,7 @@ MonoBehaviour:
   player: {fileID: 7705348315184807645}
   attackCollider: {fileID: 0}
   anim: {fileID: 0}
-  damage: 1
+  damage: 2
   attackDelay: 0.1
   attackTimer: 0.1
 --- !u!1001 &7363258561057751948
@@ -1337,7 +1340,7 @@ MonoBehaviour:
   invulnTime: 0.25
   currentHealth: 0
   shopHealth: 0
-  trippyRegen: 10
+  trippyRegen: 15
 --- !u!114 &10000981285763218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,7 +1378,7 @@ MonoBehaviour:
   flipAudio: {fileID: 2981135584971582709}
   isTrippy: 1
   trippyDuration: 12
-  fleshDamageNeeded: 100
+  fleshDamageNeeded: 70
   timer: 0
   swapped: 0
   canSwap: 1
@@ -1714,6 +1717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7705348315184807645}
+  weaponScript: {fileID: 0}
   attackCollider: {fileID: 0}
   swingSpeed: 0.5
   damage: 15
