@@ -16,7 +16,6 @@ public class PickupSpawner : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(spawnRotation);
         for(int i = 0; i < 2; i++)
         {
-            Debug.Log(pickups.Length);
             GameObject pickupsPrefab = pickups[Random.Range(0, pickups.Length)];
 
             GameObject pickup = Instantiate(pickupsPrefab, transform.position + new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)), rotation);

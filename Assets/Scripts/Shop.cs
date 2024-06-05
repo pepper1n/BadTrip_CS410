@@ -45,7 +45,6 @@ public class Shop : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         pl = player.GetComponent<PlayerLocomotion>();
         pm = player.GetComponent<PlayerManager>();
-        Debug.Log("hi");
         music = GameObject.Find("MusicSource");
         fade = FindObjectOfType<FadeToBlack>();
         shop = GameObject.Find("Shop");
