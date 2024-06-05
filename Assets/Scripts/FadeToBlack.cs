@@ -8,18 +8,6 @@ public class FadeToBlack : MonoBehaviour
     public Image blackScreen;
     public float fadeDuration = 1f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Fade()
     {
         float elapsedTime = 0f;

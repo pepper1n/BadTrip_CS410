@@ -1916,23 +1916,23 @@ MonoBehaviour:
   size: {x: 5, y: 5}
   startPos: 0
   rooms:
-  - room: {fileID: 7633575498576695660, guid: 1efbbb2edeea8c343b89d3054935d1c3, type: 3}
+  - room: {fileID: 7633575498576695660, guid: 572f0cd953e182e4c867a8b262b49788, type: 3}
     minPosition: {x: 0, y: 0}
     maxPosition: {x: 4, y: 4}
     obligatory: 0
-  - room: {fileID: 7633575498576695660, guid: 19cb77b503480154db1a51a98ec99ec9, type: 3}
+  - room: {fileID: 7633575498576695660, guid: cfb7cd3308e2f0543a82f0f2cc744df8, type: 3}
     minPosition: {x: 0, y: 0}
     maxPosition: {x: 5, y: 5}
     obligatory: 0
-  - room: {fileID: 7633575498576695660, guid: 7e2d4568fdaf6f64e9380f41e96afca6, type: 3}
+  - room: {fileID: 7633575498576695660, guid: 334bc77e420c6464db99ceeb863b852a, type: 3}
     minPosition: {x: 4, y: 4}
     maxPosition: {x: 5, y: 5}
     obligatory: 1
-  - room: {fileID: 7633575498576695660, guid: 99b49a8ff3955aa43abb0f6feb8a63a5, type: 3}
+  - room: {fileID: 7633575498576695660, guid: 4bb850429906d154a8167d67a7cecf8f, type: 3}
     minPosition: {x: 0, y: 0}
     maxPosition: {x: 0, y: 0}
     obligatory: 1
-  - room: {fileID: 7633575498576695660, guid: 775cc547a2f34bf45a6a715c824903f4, type: 3}
+  - room: {fileID: 7633575498576695660, guid: ff8526141173d3d41890a9b7742cc832, type: 3}
     minPosition: {x: 2, y: 2}
     maxPosition: {x: 4, y: 4}
     obligatory: 1
