@@ -47,10 +47,9 @@ namespace BT
         {
             if (attackTimer >= attackDelay)
             {
-                if(!cast.isPlaying)
-                {
+                
                     cast.Play();
-                }
+                
                 int layerMask = 1 << 10;
                 layerMask = ~layerMask;
                 Vector3 ScreenCentreCoordinates = new Vector3(0.5f, 0.5f, 0f);
