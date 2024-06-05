@@ -70,6 +70,7 @@ namespace BT
                 bullet.transform.LookAt(projectileDestination);
                 bullet.GetComponent<EHProjectile>().Travel();
                 attackTimer = 0f;
+                Destroy(bullet, 2.0f);
 
             }
         }

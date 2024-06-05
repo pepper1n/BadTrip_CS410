@@ -16,6 +16,10 @@ public class StateFlipping : MonoBehaviour
     public float trippyDuration = 5;
     public float fleshHitsNeeded = 5;
     public float timer = 0;
+    public bool swapped = false;
+    public bool canSwap = true;
+    public float swapTimer = 0f;
+    private HostileBehavior hb;
 
     Color trippyColor = new Color(1, 0, 1, 1);
     Color fleshColor = new Color(1, 0, 0, 1);
@@ -23,6 +27,11 @@ public class StateFlipping : MonoBehaviour
     private GameObject fleshAudio;
     private AudioSource[] trippyAudioSources;
 
+    void Start()
+    {
+        hb = FindObjectOfType<HostileBehavior>();
+
+    }
     void Update()
     {
         if (isTrippy)
@@ -46,10 +55,33 @@ public class StateFlipping : MonoBehaviour
         {
             Swap();
         }
+        if (swapped == true)
+        {
+            swapTimer += Time.deltaTime;
+        }
+        if (swapTimer >= 5)
+        {
+            unSwap();
+        }
+    }
+    
+    public void doSwap()
+    {
+        swapTimer = 0f;
+        swapped = true;
+        Swap();
+
+    }
+    public void unSwap()
+    {
+        Swap();
+        swapTimer = 0f;
+        swapped = false;
+
     }
 
 
-    void Swap()
+    public void Swap()
     {
         isTrippy = !isTrippy;
         GameObject[] stateStructures = GameObject.FindGameObjectsWithTag("stateStructure");

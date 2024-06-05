@@ -562,12 +562,16 @@ MonoBehaviour:
 
     Right click - Strafe
 
+    C
+    - Character sheet
 
-    Attack
-    enemies to temporarily enter trippy state
+    Escape - Close window
 
-    Stand still while in this state
-    to heal
+
+    Attack enemies to temporarily
+    enter trippy state
+
+    Stand still while in this state to heal
 
 
 

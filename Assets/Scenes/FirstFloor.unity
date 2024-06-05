@@ -3192,6 +3192,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!20 &1740197898 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6428581868925582768, guid: 53ae97f02fbb4e345b2c17fad5f64a6c, type: 3}
+  m_PrefabInstance: {fileID: 469730558}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1817948421
 GameObject:
   m_ObjectHideFlags: 0
@@ -3291,6 +3296,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4757528885215586694, guid: d8bbe2efdf53bf3469acd0dbc6302434, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1740197898}
     - target: {fileID: 6719243297968832457, guid: d8bbe2efdf53bf3469acd0dbc6302434, type: 3}
       propertyPath: m_IsActive
       value: 1

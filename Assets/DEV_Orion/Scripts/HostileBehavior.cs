@@ -22,6 +22,9 @@ namespace BT
         public GameObject player;
         public Vector3 spawnRotation;
         Quaternion rotation;
+        public StateFlipping sf;
+        public bool canSwap = true;
+        public float swapTime = 0f;
 
 
         public void Start()
@@ -56,6 +59,16 @@ namespace BT
                 }
                 
                 healthBar.value = currentHealth;
+            }
+            if(canSwap == false)
+            {
+                swapTime += Time.deltaTime;
+
+            }
+            if(swapTime >= 5f)
+            {
+                canSwap = true;
+                swapTime = 0f;
             }
         }
 
@@ -99,6 +112,11 @@ namespace BT
 
         public void TakeDamage(float damage)
         {
+            if(canSwap == true)
+            {
+                stateScript.doSwap();
+                canSwap = false;
+            }
             Debug.Log("Damaged");
             currentHealth -= (damage + pl.shopDamage);
             if (currentHealth <= 0)
