@@ -16,7 +16,7 @@ public class StateFlipping : MonoBehaviour
 
     public bool isTrippy = true;
     public float trippyDuration = 5;
-    public float fleshHitsNeeded = 5;
+    public float fleshDamageNeeded = 100;
     public float timer = 0;
     public bool swapped = false;
     public bool canSwap = true;
@@ -42,47 +42,18 @@ public class StateFlipping : MonoBehaviour
             if (timer >= trippyDuration)
             {
                 timer = 0;
-                //Swap();
+                Swap();
             }
         }
         else
         {
-            if (timer >= fleshHitsNeeded)
+            if (timer >= fleshDamageNeeded)
             {
                 timer = 0;
-                //Swap();
+                Swap();
             }
         }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Swap();
-        }
-        if (swapped == true)
-        {
-            swapTimer += Time.deltaTime;
-        }
-        if (swapTimer >= 5)
-        {
-            unSwap();
-        }
     }
-    
-    public void doSwap()
-    {
-        flipAudio.Play();
-        swapTimer = 0f;
-        swapped = true;
-        Swap();
-
-    }
-    public void unSwap()
-    {
-        Swap();
-        swapTimer = 0f;
-        swapped = false;
-
-    }
-
 
     public void Swap()
     {

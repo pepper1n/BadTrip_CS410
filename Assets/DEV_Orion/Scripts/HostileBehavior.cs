@@ -112,11 +112,6 @@ namespace BT
 
         public void TakeDamage(float damage)
         {
-            if(canSwap == true)
-            {
-                stateScript.doSwap();
-                canSwap = false;
-            }
             Debug.Log("Damaged");
             currentHealth -= (damage + pl.shopDamage);
             if (currentHealth <= 0)

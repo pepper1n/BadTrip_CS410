@@ -55,7 +55,8 @@ namespace BT
                     attackTimer = 0f;
                     if (!isTrippy)
                     {
-                        stateScript.timer += 1;
+                        stateScript.timer += damage;
+                        Debug.Log($"damage done: {damage}");
                     }
                 }
                 else if (parentHostile != null)
@@ -64,7 +65,8 @@ namespace BT
                     attackTimer = 0f;
                     if (!isTrippy)
                     {
-                        stateScript.timer += 1;
+                        stateScript.timer += damage;
+                        Debug.Log($"damage done: {damage}");
                     }
                 }
             }

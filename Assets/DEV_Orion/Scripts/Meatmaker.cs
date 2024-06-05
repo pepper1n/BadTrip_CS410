@@ -9,6 +9,7 @@ namespace BT
         public GameObject player;
         private InputHandler inputHandler;
         public CapsuleCollider attackCollider;
+        private StateFlipping stateScript;
         public Animator anim;
 
         public float damage = 2f;
@@ -24,6 +25,7 @@ namespace BT
         {
             inputHandler = player.GetComponent<InputHandler>();
             attackCollider = GetComponent<CapsuleCollider>();
+            stateScript = player.GetComponent<StateFlipping>();
             //audioSource = GetComponent<AudioSource>();
             //shopScript = FindObjectOfType<Shop>();
             anim = GetComponent<Animator>();
@@ -49,11 +51,14 @@ namespace BT
                 if (otherHostile != null)
                 {
                     otherHostile.TakeDamage(damage);
+                    Debug.Log($"damage done: {damage}");
+                    stateScript.timer += damage;
                     attackTimer = 0f;
                 }
                 else if (parentHostile != null)
                 {
                     parentHostile.TakeDamage(damage);
+                    stateScript.timer += damage;
                     attackTimer = 0f;
                 }
             }

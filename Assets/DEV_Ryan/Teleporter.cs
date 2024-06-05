@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Teleporter : MonoBehaviour
 {
-    private int targetScene;
+    public int targetScene;
     private GameObject spawn;
     private Spawn spawnScript;
 

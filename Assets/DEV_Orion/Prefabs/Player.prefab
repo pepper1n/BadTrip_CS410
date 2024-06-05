@@ -1119,6 +1119,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 95d1d8711a958b04f91afefef5699416, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8066191775647049107}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 95d1d8711a958b04f91afefef5699416, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9126380553442483452}
   m_SourcePrefab: {fileID: 100100000, guid: 95d1d8711a958b04f91afefef5699416, type: 3}
 --- !u!4 &3245210653929931089 stripped
 Transform:
@@ -1370,8 +1373,8 @@ MonoBehaviour:
   fightAudio: {fileID: 0}
   flipAudio: {fileID: 2981135584971582709}
   isTrippy: 1
-  trippyDuration: 5
-  fleshHitsNeeded: 5
+  trippyDuration: 12
+  fleshDamageNeeded: 100
   timer: 0
   swapped: 0
   canSwap: 1
@@ -1568,6 +1571,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9126380553442483452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705348315184807645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7adbddbdda4a2b94ca408f163e129cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScene: 0
 --- !u!1001 &7905361444092226944
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -136,8 +136,8 @@ namespace BT
         public void Die()
         {
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene("Start");
-
+            SceneManager.LoadScene(0);
+            currentHealth = maxHealth;
         }
 
         public void InflictPoison(float damage, float duration)

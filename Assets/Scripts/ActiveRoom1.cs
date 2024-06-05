@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BT;
 
-public class ActiveRoom : MonoBehaviour
+public class ActiveRoom1 : MonoBehaviour
 {
     public AudioClip fightAudio;
     public GameObject doors;
@@ -20,7 +20,6 @@ public class ActiveRoom : MonoBehaviour
     public GameObject teleporter;
     public Transform shopSpawn;
     public GameObject shop;
-    public static bool isFighting;
 
 
 
@@ -39,7 +38,6 @@ public class ActiveRoom : MonoBehaviour
         if (other.CompareTag("Player") && !triggered)
         {
             triggered = true;
-            isFighting = true;
 
             // stop current music and start fight music
             ambientMusic.SetActive(false);
@@ -87,11 +85,25 @@ public class ActiveRoom : MonoBehaviour
         if (enemies.Count <= 0 && triggered)
         {
             // reset ambient music
-            isFighting = false;
             audioSource.Stop();
+
             ambientMusic.SetActive(true);
 
-            GameObject.Find("Player").GetComponent<StateFlipping>().musicSwap(ambientMusic);
+            isTrippy = GameObject.Find("Player").GetComponent<StateFlipping>().isTrippy;
+            if (isTrippy)
+            {
+                // trippy music on
+                ambientMusic.transform.GetChild(1).gameObject.SetActive(true);
+                // dark music off
+                ambientMusic.transform.GetChild(0).gameObject.SetActive(false);
+            }
+            else if (!isTrippy)
+            {
+                // dark music on
+                ambientMusic.transform.GetChild(0).gameObject.SetActive(true);
+                // trippy music off
+                ambientMusic.transform.GetChild(1).gameObject.SetActive(false);
+            }
 
             if (teleporter != null)
             {
@@ -100,7 +112,7 @@ public class ActiveRoom : MonoBehaviour
 
             // open doors
             doors.SetActive(false);
-            shop.transform.position = shopSpawn.transform.position + new Vector3(0, 0, 2);
+            shop.transform.position = shopSpawn.transform.position + new Vector3(0, 0, 2);  
             foreach (Transform child in transform)
             {
                 if (child.CompareTag("LevelExit"))
@@ -108,7 +120,6 @@ public class ActiveRoom : MonoBehaviour
                     child.gameObject.SetActive(true);
                 }
             }
-            triggered = false;
             //spawn shop
             //shop.SetActive(true);
             /*GameObject shop = Instantiate(shopPrefab, shopSpawn.position, Quaternion.identity);
