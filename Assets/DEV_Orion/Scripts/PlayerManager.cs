@@ -14,6 +14,7 @@ namespace BT
         public Vector3 startingPosition;
 
         private Rigidbody rb;
+        private StateFlipping stateScript;
 
         InputHandler inputHandler;
         Animator anim;
@@ -25,6 +26,7 @@ namespace BT
         public float shopHealth = 0f;
         public float trippyRegen = 10f;
 
+        private bool isTrippy;
         private bool DOT = false;
         private bool isStandingStill;
         private float DOTduration = 0;
@@ -54,10 +56,12 @@ namespace BT
             inputHandler = GetComponent<InputHandler>();
             anim = GetComponent<Animator>();
             rb = GetComponent<Rigidbody>();
+            stateScript = GetComponent<StateFlipping>();
         }
 
         void Update()
         {
+            isTrippy = stateScript.isTrippy;
             inputHandler.isInteracting = anim.GetBool("isInteracting");
             inputHandler.rollFlag = false;
             inputHandler.sprintFlag = false;
@@ -109,7 +113,7 @@ namespace BT
                 isStandingStill = rb.velocity.magnitude < 0.1f;
             }
 
-            if (isStandingStill)
+            if (isTrippy && isStandingStill)
             {
                 HealPlayer();
             }

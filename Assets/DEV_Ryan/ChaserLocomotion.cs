@@ -21,16 +21,17 @@ public class ChaserLocomotion : MonoBehaviour
 
         if (directionToPlayer != Vector3.zero)
         {
-            Quaternion rotationToPlayer = Quaternion.LookRotation(-directionToPlayer);
+            Quaternion rotationToPlayer = Quaternion.LookRotation(directionToPlayer);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotationToPlayer, Time.deltaTime * agent.angularSpeed);
         }
 
         if (directionToPlayer.magnitude < (chaserAttack.range * 0.9f))
         {
-            agent.SetDestination(transform.position);
+            agent.isStopped = true;
         }
         else
         {
+            agent.isStopped = false;
             agent.SetDestination(player.position);
         }
     }
