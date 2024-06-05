@@ -57,26 +57,7 @@ public class StateFlipping : MonoBehaviour
         {
             if (stateStructure.name == "MusicSource")
             {
-                fleshAudio = stateStructure.transform.GetChild(0).gameObject;
-                trippyAudioSources = stateStructure.transform.GetChild(1).gameObject.GetComponentsInChildren<AudioSource>();
-
-                if (isTrippy)
-                {
-                    foreach (AudioSource trippyAudio in trippyAudioSources)
-                    {
-                        trippyAudio.volume = 0.5f;
-                    }
-                    fleshAudio.SetActive(false);
-
-                }
-                else if (!isTrippy)
-                {
-                    foreach (AudioSource trippyAudio in trippyAudioSources)
-                    {
-                        trippyAudio.volume = 0f;
-                    }
-                    fleshAudio.SetActive(true);
-                }
+                musicSwap(stateStructure);
             }
             else 
             {
@@ -118,6 +99,31 @@ public class StateFlipping : MonoBehaviour
         foreach (Light light in lights)
         {
             light.color = isTrippy ? trippyColor : fleshColor;
+        }
+    }
+    public void musicSwap(GameObject stateStructure)
+    {
+        fleshAudio = stateStructure.transform.GetChild(0).gameObject;
+        trippyAudioSources = stateStructure.transform.GetChild(1).gameObject.GetComponentsInChildren<AudioSource>();
+
+        bool isFighting = ActiveRoom.isFighting;
+
+        if (isTrippy && !isFighting)
+        {
+            foreach (AudioSource trippyAudio in trippyAudioSources)
+            {
+                trippyAudio.volume = 0.5f;
+            }
+            fleshAudio.SetActive(false);
+
+        }
+        else if (!isTrippy && !isFighting)
+        {
+            foreach (AudioSource trippyAudio in trippyAudioSources)
+            {
+                trippyAudio.volume = 0f;
+            }
+            fleshAudio.SetActive(true);
         }
     }
 }

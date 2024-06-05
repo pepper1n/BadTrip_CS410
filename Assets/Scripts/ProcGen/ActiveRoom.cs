@@ -20,6 +20,7 @@ public class ActiveRoom : MonoBehaviour
     public GameObject teleporter;
     public Transform shopSpawn;
     public GameObject shop;
+    public static bool isFighting;
 
 
 
@@ -38,6 +39,7 @@ public class ActiveRoom : MonoBehaviour
         if (other.CompareTag("Player") && !triggered)
         {
             triggered = true;
+            isFighting = true;
 
             // stop current music and start fight music
             ambientMusic.SetActive(false);
@@ -85,25 +87,11 @@ public class ActiveRoom : MonoBehaviour
         if (enemies.Count <= 0 && triggered)
         {
             // reset ambient music
+            isFighting = false;
             audioSource.Stop();
-
             ambientMusic.SetActive(true);
 
-            isTrippy = GameObject.Find("Player").GetComponent<StateFlipping>().isTrippy;
-            if (isTrippy)
-            {
-                // trippy music on
-                ambientMusic.transform.GetChild(1).gameObject.SetActive(true);
-                // dark music off
-                ambientMusic.transform.GetChild(0).gameObject.SetActive(false);
-            }
-            else if (!isTrippy)
-            {
-                // dark music on
-                ambientMusic.transform.GetChild(0).gameObject.SetActive(true);
-                // trippy music off
-                ambientMusic.transform.GetChild(1).gameObject.SetActive(false);
-            }
+            GameObject.Find("Player").GetComponent<StateFlipping>().musicSwap(ambientMusic);
 
             if (teleporter != null)
             {

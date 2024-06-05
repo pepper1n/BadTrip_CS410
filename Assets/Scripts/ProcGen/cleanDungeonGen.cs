@@ -8,6 +8,7 @@ public class DungeonGenerator : MonoBehaviour
     {
         public bool visited = false;
         public bool[] status = new bool[4];
+        public (int x, int y) coordinates;
     }
 
     [System.Serializable]
@@ -37,6 +38,7 @@ public class DungeonGenerator : MonoBehaviour
     public int startPos = 0;
     public Rule[] rooms;
     public Vector2 offset;
+    private List<string> roomTypes = new List<string>();
 
     List<Cell> board;
 
@@ -90,6 +92,8 @@ public class DungeonGenerator : MonoBehaviour
                     newRoom.UpdateRoom(currentCell.status);
                     newRoom.name += " " + i + "-" + j;
 
+                    roomTypes.Add(rooms[randomRoom].room.name);
+
                 }
             }
         }
@@ -104,7 +108,9 @@ public class DungeonGenerator : MonoBehaviour
         {
             for (int j = 0; j < size.y; j++)
             {
-                board.Add(new Cell());
+                Cell newCell = new Cell();
+                newCell.coordinates = (i,j);
+                board.Add(newCell);
             }
         }
 
@@ -119,6 +125,7 @@ public class DungeonGenerator : MonoBehaviour
             k++;
 
             board[currentCell].visited = true;
+            Debug.Log(board[currentCell].coordinates);
 
             if(currentCell == board.Count - 1)
             {
